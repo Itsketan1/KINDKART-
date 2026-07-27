@@ -1,0 +1,37 @@
+footer{
+    background:#0F172A;
+    color:white;
+    padding:70px 0 20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:40px;
+}
+
+.footer-grid h4{
+    margin-bottom:20px;
+}
+
+.footer-grid a{
+    display:block;
+    margin-bottom:10px;
+    color:#CBD5E1;
+}
+
+.footer-grid a:hover{
+    color:white;
+}
+
+.social-icons{
+    display:flex;
+    gap:15px;
+    font-size:22px;
+}
+
+.copyright{
+    margin-top:40px;
+    text-align:center;
+    color:#94A3B8;
+}

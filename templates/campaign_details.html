@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}{{ campaign.title }}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/pages/campaign_details.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="campaign-hero">
+
+    <div class="container">
+
+        <div class="hero-grid">
+
+            <!-- Left -->
+            <div class="hero-image">
+
+                <img src="{{ url_for('static', filename=campaign.image) }}"
+                     alt="{{ campaign.title }}">
+
+            </div>
+
+            <!-- Right -->
+            <div class="hero-content">
+
+                <span class="category">
+                    {{ campaign.category }}
+                </span>
+
+                <h1>{{ campaign.title }}</h1>
+
+                <p class="description">
+                    {{ campaign.description }}
+                </p>
+
+                {% include "components/progress_bar.html" %}
+
+                <div class="campaign-stats">
+
+                    <div class="stat">
+                        <h3>${{ campaign.raised }}</h3>
+                        <p>Raised</p>
+                    </div>
+
+                    <div class="stat">
+                        <h3>${{ campaign.goal }}</h3>
+                        <p>Goal</p>
+                    </div>
+
+                    <div class="stat">
+                        <h3>{{ campaign.supporters }}</h3>
+                        <p>Supporters</p>
+                    </div>
+
+                    <div class="stat">
+                        <h3>{{ campaign.days_left }}</h3>
+                        <p>Days Left</p>
+                    </div>
+
+                </div>
+
+                <div class="hero-buttons">
+
+                    <a href="{{ url_for('donate_campaign', campaign_id=campaign.id) }}"
+                       class="btn btn-primary">
+                        Donate Now
+                    </a>
+
+                    <button class="btn btn-outline">
+                        Share
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STORY -->
+<section class="story-section">
+
+    <div class="container">
+
+        <div class="story-grid">
+
+            <div class="story-content">
+
+                <h2>Campaign Story</h2>
+
+                <p>{{ campaign.story }}</p>
+
+            </div>
+
+            <aside class="sticky-card">
+
+                {% include "components/donation_card.html" %}
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ORGANIZER -->
+<section class="organizer-section">
+
+    <div class="container">
+
+        <h2>Organizer</h2>
+
+        {% include "components/organizer_card.html" %}
+
+    </div>
+
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+
+    <div class="container">
+
+        <h2>Campaign Updates</h2>
+
+        {% include "components/update_timeline.html" %}
+
+    </div>
+
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+
+    <div class="container">
+
+        <h2>Gallery</h2>
+
+        {% include "components/gallery.html" %}
+
+    </div>
+
+</section>
+
+<!-- DONORS -->
+<section class="donor-section">
+
+    <div class="container">
+
+        <h2>Recent Supporters</h2>
+
+        {% include "components/donor_card.html" %}
+
+    </div>
+
+</section>
+
+<!-- RELATED -->
+<section class="related-section">
+
+    <div class="container">
+
+        <h2>Related Campaigns</h2>
+
+        {% include "components/related_campaigns.html" %}
+
+    </div>
+
+</section>
+
+{% endblock %}

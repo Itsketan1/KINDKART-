@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ================================= -->
+    <!-- META -->
+    <!-- ================================= -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}KindKart{% endblock %}</title>
+
+    <meta name="description"
+        content="KindKart - Student Community Marketplace & Donation Platform">
+
+    <meta name="keywords"
+        content="KindKart, Marketplace, Donation, Students, NGO">
+
+    <!-- ================================= -->
+    <!-- GOOGLE FONTS -->
+    <!-- ================================= -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/hero.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cards.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/marketplace.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/item_details.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/testimonials.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cta.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    {% block css %}{% endblock %}
+
+</head>
+
+<body>
+
+    <!-- ================================= -->
+    <!-- NAVBAR -->
+    <!-- ================================= -->
+
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+            <a href="{{ url_for('home') }}" class="logo">
+
+                <span class="logo-icon">
+                    <i class="fa-solid fa-seedling"></i>
+                </span>
+
+                <span>KindKart</span>
+
+            </a>
+
+            <nav>
+
+                <ul class="nav-links">
+
+    <li>
+        <a
+            href="{{ url_for('home') }}"
+            class="{% if request.endpoint == 'home' %}active{% endif %}">
+            Home
+        </a>
+    </li>
+
+    <li>
+        <a
+            href="{{ url_for('marketplace') }}"
+            class="{% if request.endpoint == 'marketplace' %}active{% endif %}">
+            Marketplace
+        </a>
+    </li>
+
+    <li>
+        <a
+            href="{{ url_for('campaigns') }}"
+            class="{% if request.endpoint == 'campaigns' %}active{% endif %}">
+            Campaigns
+        </a>
+    </li>
+
+    
+    <li>
+        <a
+            href="{{ url_for('about') }}"
+            class="{% if request.endpoint == 'about' %}active{% endif %}">
+            About
+        </a>
+    </li>
+
+    <li>
+        <a
+            href="{{ url_for('contact') }}"
+            class="{% if request.endpoint == 'contact' %}active{% endif %}">
+            Contact
+        </a>
+    </li>
+
+</ul>
+
+            </nav>
+
+            <div class="nav-actions">
+
+    {% if session.get("user_id") %}
+
+        <a href="{{ url_for('dashboard') }}" class="btn btn-outline">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('logout') }}" class="btn btn-primary">
+            Logout
+        </a>
+
+    {% else %}
+
+        <a href="{{ url_for('login') }}" class="btn btn-outline">
+            Login
+        </a>
+
+        <a href="{{ url_for('register') }}" class="btn btn-primary">
+            Get Started
+        </a>
+
+    {% endif %}
+
+    <button id="themeToggle" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <button id="menuBtn" aria-label="Open navigation menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+</div>
+        </div>
+
+    </header>
+
+    <!-- ================================= -->
+    <!-- FLASH MESSAGE -->
+    <!-- ================================= -->
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+    {% if messages %}
+
+    <div class="flash-wrapper">
+
+        {% for category, message in messages %}
+
+        <div class="flash {{ category }}">
+
+            {{ message }}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+    {% endwith %}
+
+    <!-- ================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ================================= -->
+
+    <main>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+    <!-- ================================= -->
+    <!-- FOOTER -->
+    <!-- ================================= -->
+
+    <footer>
+
+        <div class="container footer-grid">
+
+            <div>
+
+                <h2>KindKart</h2>
+
+                <p>
+
+                    Connecting students, communities and NGOs through one trusted platform.
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4>Quick Links</h4>
+
+              <a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('about') }}">About</a>
+<a href="{{ url_for('campaigns') }}">Campaigns</a>
+<a href="{{ url_for('contact') }}">Contact</a>
+
+            </div>
+
+            <div>
+
+                <h4>Contact</h4>
+
+                <p>Pune, Maharashtra</p>
+
+                <p>support@kindkart.in</p>
+
+            </div>
+
+            <div>
+
+                <h4>Follow Us</h4>
+
+                <div class="social-icons">
+
+                    <a href="#">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+
+            © 2026 KindKart. All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+    <!-- ================================= -->
+    <!-- JS -->
+    <!-- ================================= -->
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    {% block js %}
+
+    {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+/* ==========================
+   DONATE PAGE
+========================== */
+
+.donate-page{
+    padding:70px 0;
+    background:#f8fafc;
+    min-height:100vh;
+}
+
+.donate-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:40px;
+    align-items:start;
+}
+
+/* LEFT CARD */
+
+.campaign-summary{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.campaign-summary img{
+    width:100%;
+    height:340px;
+    object-fit:cover;
+}
+
+.campaign-summary .category{
+    display:inline-block;
+    margin:25px 30px 10px;
+    background:#16a34a;
+    color:#fff;
+    padding:6px 16px;
+    border-radius:40px;
+    font-size:.85rem;
+}
+
+.campaign-summary h1{
+    margin:0 30px;
+    font-size:2rem;
+}
+
+.campaign-summary p{
+    margin:18px 30px;
+    color:#555;
+    line-height:1.7;
+}
+
+/* Progress */
+
+.progress{
+    margin:25px 30px;
+    background:#e5e7eb;
+    height:12px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    background:linear-gradient(90deg,#16a34a,#22c55e);
+    border-radius:20px;
+}
+
+/* Stats */
+
+.summary-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    padding:25px 30px 35px;
+}
+
+.summary-stats div{
+    background:#f5f7fb;
+    border-radius:15px;
+    padding:18px;
+    text-align:center;
+}
+
+.summary-stats h3{
+    margin-bottom:8px;
+    color:#16a34a;
+}
+
+.summary-stats p{
+    margin:0;
+    color:#666;
+}
+/* ==========================
+   DONATION FORM
+========================== */
+
+.donation-form{
+    background:#fff;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.donation-form h2{
+    margin-bottom:25px;
+}
+
+.donation-form h3{
+    margin:30px 0 15px;
+}
+
+/* Amount */
+
+.amount-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.amount-grid label{
+    cursor:pointer;
+}
+
+.amount-grid input{
+    display:none;
+}
+
+.amount-grid span{
+    display:block;
+    padding:16px;
+    text-align:center;
+    border:2px solid #d1d5db;
+    border-radius:12px;
+    transition:.3s;
+    font-weight:600;
+}
+
+.amount-grid input:checked + span{
+    background:#16a34a;
+    color:#fff;
+    border-color:#16a34a;
+}
+
+/* Inputs */
+
+.donation-form input[type=text],
+.donation-form input[type=email],
+.donation-form input[type=number]{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font-size:1rem;
+    outline:none;
+}
+
+.donation-form input:focus{
+    border-color:#16a34a;
+}
+.payment-options{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.payment-options label{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.payment-options label:hover{
+    border-color:#16a34a;
+    background:#f0fdf4;
+}
+
+/* Donate Button */
+
+.donate-btn{
+    width:100%;
+    padding:16px;
+    font-size:1rem;
+    border:none;
+    cursor:pointer;
+    border-radius:12px;
+}
+@media(max-width:992px){
+
+    .donate-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .amount-grid{
+        grid-template-columns:1fr;
+    }
+
+    .summary-stats{
+        grid-template-columns:1fr;
+    }
+
+}

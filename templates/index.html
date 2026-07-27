@@ -1,0 +1,553 @@
+{% extends "base.html" %}
+
+{% block title %}KindKart | Student Marketplace & Donation Platform{% endblock %}
+
+{% block content %}
+
+<!-- ==========================
+        HERO SECTION
+=========================== -->
+
+<section class="hero">
+
+    <div class="container hero-container">
+
+        <div class="hero-left">
+
+            <span class="hero-badge">
+
+                🌱 India's Student Community Platform
+
+            </span>
+
+            <h1>
+
+            Buy, Sell & Donate
+            Everything a Student Needs
+            on One Trusted Platform
+                <span>All in One Place.</span>
+
+            </h1>
+
+            <p>
+
+            Buy affordable books, furniture, electronics,
+            sell unused essentials,
+            or donate to verified NGOs—
+            all through one secure student platform.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{{ url_for('marketplace') }}" class="btn btn-primary">
+    Explore Marketplace
+</a>
+
+<a href="{{ url_for('register') }}" class="btn btn-outline">
+    Start Selling
+</a>
+
+            </div>
+
+        </div>
+
+</section>
+<!-- ==========================
+        FEATURES
+=========================== -->
+
+<section class="features">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="badge">
+
+                Why Choose KindKart
+
+            </span>
+
+            <h2>
+
+                Everything Students Need
+
+            </h2>
+
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    📚
+
+                </div>
+
+                <h3>
+
+                    Student Marketplace
+
+                </h3>
+
+                <p>
+
+                    Buy and sell books, furniture,
+                    electronics and study materials.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    ❤️
+
+                </div>
+
+                <h3>
+
+                    Donations
+
+                </h3>
+
+                <p>
+
+                    Donate unused items or directly
+                    contribute to verified campaigns.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    🛡️
+
+                </div>
+
+                <h3>
+
+                    Verified NGOs
+
+                </h3>
+
+                <p>
+
+                    Every NGO goes through
+                    a verification process.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    🌍
+
+                </div>
+
+                <h3>
+
+                    Community
+
+                </h3>
+
+                <p>
+
+                    Build a sustainable student ecosystem
+                    through reuse and donations.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================
+    FEATURED MARKETPLACE
+=========================== -->
+
+<section class="marketplace-preview">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="badge">
+                Featured Marketplace
+            </span>
+
+            <h2>
+                Latest Student Listings
+            </h2>
+
+            <p>
+                Discover affordable books, electronics, furniture and more from fellow students.
+            </p>
+
+        </div>
+
+       <div class="marketplace-grid">
+
+    {% if featured_items %}
+
+        {% for item in featured_items %}
+
+        <div class="market-card">
+
+            {% if item["image"] %}
+                <img src="{{ url_for('static', filename='uploads/' + item['image']) }}"
+                     alt="{{ item['title'] }}">
+            {% else %}
+                <img src="{{ url_for('static', filename='images/no-image.png') }}"
+                     alt="No Image">
+            {% endif %}
+
+            <div class="market-content">
+
+                <span class="category">
+                    {{ item["category"] }}
+                </span>
+
+                <h3>{{ item["title"] }}</h3>
+
+                <p class="price">
+                    ₹{{ item["price"] }}
+                </p>
+
+                <p class="condition">
+                    {{ item["condition"] }}
+                </p>
+
+                <a href="{{ url_for('item_details', item_id=item['id']) }}"
+                   class="btn btn-primary">
+                    View Details
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p class="text-center">
+            No marketplace items available.
+        </p>
+
+    {% endif %}
+
+</div>
+    </div>
+
+</section>
+
+<!-- ==========================
+    FEATURED CAMPAIGNS
+=========================== -->
+
+<section class="campaign-preview">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="badge">
+
+                Featured Campaigns
+
+            </span>
+
+            <h2>
+
+                Make a Difference Today
+
+            </h2>
+
+        </div>
+
+        <div class="campaign-grid">
+
+           <div class="campaign-card">
+
+    <img src="{{ url_for('static', filename='images/campaign1.jpg') }}"
+         alt="Education Campaign">
+
+    <div class="campaign-content">
+
+        <span class="badge">
+            Education
+        </span>
+
+        <h3>Education For Every Child</h3>
+
+        <p>
+            Help provide books and school kits to underprivileged children.
+        </p>
+
+        <div class="campaign-progress">
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:75%;"></div>
+            </div>
+
+            <div class="campaign-stats">
+
+                <span>
+                    Raised
+                    <strong>₹45,000</strong>
+                </span>
+
+                <span>
+                    Goal
+                    <strong>₹60,000</strong>
+                </span>
+
+            </div>
+
+        </div>
+
+        <a href="{{ url_for('campaigns') }}"
+           class="btn btn-primary">
+            Donate Now
+        </a>
+
+    </div>
+
+</div>
+
+            <div class="campaign-card">
+
+                <img src="{{ url_for('static', filename='images/campaign2.jpg') }}"
+                    alt="Campaign">
+
+                <div class="campaign-content">
+
+                    <h3>
+
+                        Food Donation Drive
+
+                    </h3>
+
+                    <p>
+
+                        Support families by contributing
+                        essential food supplies.
+
+                    </p>
+
+                  <a href="{{ url_for('campaigns') }}"
+   class="btn btn-primary">
+    View Campaign
+</a>
+                </div>
+
+            </div>
+
+            <div class="campaign-card">
+
+                <img src="{{ url_for('static', filename='images/campaign3.jpg') }}"
+                    alt="Campaign">
+
+                <div class="campaign-content">
+
+                    <h3>
+
+                        Student Essentials
+
+                    </h3>
+
+                    <p>
+
+                        Donate furniture,
+                        laptops,
+                        books and stationery.
+
+                    </p>
+
+                 <a href="{{ url_for('campaigns') }}"
+   class="btn btn-primary">
+    View Campaign
+</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ==========================
+        TESTIMONIALS
+=========================== -->
+
+<section class="testimonials">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="badge">
+                Testimonials
+            </span>
+
+            <h2>
+                What Our Community Says
+            </h2>
+
+            <p>
+                Thousands of students and NGOs trust KindKart to buy, sell and donate with confidence.
+            </p>
+
+        </div>
+
+        <div class="testimonial-grid">
+
+            <div class="testimonial-card">
+
+                <div class="stars">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p class="testimonial-text">
+                    "I sold all my first-year engineering books within two days. The process was smooth and easy."
+                </p>
+
+                <div class="testimonial-user">
+
+                    <img src="{{ url_for('static', filename='images/user1.jpg') }}"
+                         alt="Rahul">
+
+                    <div>
+
+                        <h4>Rahul Sharma</h4>
+
+                        <span>Computer Engineering Student</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="testimonial-card">
+
+                <div class="stars">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p class="testimonial-text">
+                    "Instead of throwing away my old laptop, I donated it through KindKart to a student who really needed it."
+                </p>
+
+                <div class="testimonial-user">
+
+                    <img src="{{ url_for('static', filename='images/user2.jpg') }}"
+                         alt="Priya">
+
+                    <div>
+
+                        <h4>Priya Patel</h4>
+
+                        <span>B.Tech Student</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="testimonial-card">
+
+                <div class="stars">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <p class="testimonial-text">
+                    "KindKart helped us reach more student volunteers and donors than ever before."
+                </p>
+
+                <div class="testimonial-user">
+
+                    <img src="{{ url_for('static', filename='images/user3.jpg') }}"
+                         alt="Smile Foundation">
+
+                    <div>
+
+                        <h4>Smile Foundation</h4>
+
+                        <span>Verified NGO</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================
+        CALL TO ACTION
+=========================== -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <span class="badge">
+                Join KindKart Today
+            </span>
+
+            <h2>
+                Buy, Sell & Donate<br>
+                Through One Trusted Student Platform
+            </h2>
+
+            <p>
+                Join thousands of students across India who are saving money,
+                reducing waste, and helping communities through KindKart.
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="{{ url_for('register') }}"
+                   class="btn btn-light">
+                    Get Started
+                </a>
+
+                <a href="{{ url_for('marketplace') }}"
+                   class="btn btn-outline-light">
+                    Explore Marketplace
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

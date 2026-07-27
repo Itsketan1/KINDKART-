@@ -1,0 +1,794 @@
+/* ===================================================
+   CAMPAIGN DETAILS
+=================================================== */
+
+:root{
+    --primary:#22c55e;
+    --primary-dark:#16a34a;
+    --secondary:#2563eb;
+    --dark:#111827;
+    --text:#374151;
+    --light:#f8fafc;
+    --border:#e5e7eb;
+    --radius:18px;
+    --shadow:0 15px 40px rgba(0,0,0,.08);
+    --transition:.35s ease;
+}
+
+/* ========================= */
+
+.campaign-hero{
+    padding:120px 0 80px;
+    background:linear-gradient(135deg,#f8fafc,#eefaf2);
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+/* ========================= */
+
+.hero-image img{
+   .hero-image{
+    min-height:520px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f3f4f6;
+    border-radius:24px;
+}
+}
+
+/* ========================= */
+
+.category{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    background:#dcfce7;
+
+    color:var(--primary-dark);
+
+    border-radius:999px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+}
+
+/* ========================= */
+
+.hero-content h1{
+
+    font-size:3rem;
+
+    line-height:1.15;
+
+    color:var(--dark);
+
+    margin-bottom:20px;
+
+}
+
+/* ========================= */
+
+.description{
+
+    font-size:1.08rem;
+
+    line-height:1.8;
+
+    color:var(--text);
+
+    margin-bottom:35px;
+
+}
+
+/* ========================= */
+
+.campaign-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:18px;
+
+    margin:40px 0;
+
+}
+
+/* ========================= */
+
+.stat{
+
+    background:white;
+
+    border-radius:16px;
+
+    padding:22px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.stat:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.stat h3{
+
+    color:var(--primary);
+
+    font-size:1.7rem;
+
+}
+
+.stat p{
+
+    color:#6b7280;
+
+    margin-top:8px;
+
+}
+
+/* ========================= */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+/* ========================= */
+
+.btn{
+
+    padding:15px 32px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+.btn-outline{
+
+    border:2px solid var(--primary);
+
+    color:var(--primary);
+
+    background:white;
+
+}
+
+.btn-outline:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+/* ===================================================
+   STORY SECTION
+=================================================== */
+
+.story-section{
+    padding:90px 0;
+    background:#fff;
+}
+
+.story-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:50px;
+    align-items:start;
+}
+
+.story-content{
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:var(--shadow);
+}
+
+.story-content h2{
+    font-size:2rem;
+    color:var(--dark);
+    margin-bottom:25px;
+}
+
+.story-content p{
+    font-size:1.05rem;
+    color:var(--text);
+    line-height:1.9;
+    white-space:pre-line;
+}
+
+/* ===================================================
+   STICKY DONATION CARD
+=================================================== */
+
+.sticky-card{
+    position:sticky;
+    top:120px;
+}
+
+.donation-card{
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:var(--shadow);
+    border:1px solid var(--border);
+}
+
+.donation-card h3{
+    margin-bottom:20px;
+    color:var(--dark);
+}
+
+.donation-amounts{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.amount-btn{
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#fff;
+    cursor:pointer;
+    transition:var(--transition);
+    font-weight:600;
+}
+
+.amount-btn:hover{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+.custom-amount{
+    width:100%;
+    padding:14px;
+    margin-bottom:20px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    font-size:1rem;
+}
+
+.donate-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:var(--primary);
+    color:#fff;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:var(--transition);
+}
+
+.donate-btn:hover{
+    background:var(--primary-dark);
+    transform:translateY(-2px);
+}
+
+/* ===================================================
+   ORGANIZER
+=================================================== */
+
+.organizer-section{
+    padding:90px 0;
+    background:var(--light);
+}
+
+.organizer-section h2{
+    text-align:center;
+    margin-bottom:45px;
+    font-size:2rem;
+    color:var(--dark);
+}
+
+.organizer-card{
+    background:#fff;
+    border-radius:22px;
+    padding:35px;
+    box-shadow:var(--shadow);
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.organizer-avatar{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.organizer-info h3{
+    font-size:1.6rem;
+    color:var(--dark);
+}
+
+.organizer-info p{
+    margin-top:10px;
+    color:var(--text);
+}
+
+.organizer-stats{
+    display:flex;
+    gap:30px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.organizer-stat{
+    text-align:center;
+}
+
+.organizer-stat h4{
+    color:var(--primary);
+    font-size:1.3rem;
+}
+
+.organizer-stat span{
+    color:#6b7280;
+    font-size:.95rem;
+}
+/* ===================================================
+   TIMELINE
+=================================================== */
+
+.timeline-section{
+    padding:90px 0;
+    background:#fff;
+}
+
+.timeline-section h2{
+    text-align:center;
+    margin-bottom:50px;
+    color:var(--dark);
+    font-size:2rem;
+}
+
+.timeline{
+    max-width:800px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:25px;
+    top:0;
+    width:4px;
+    height:100%;
+    background:var(--primary);
+    border-radius:5px;
+}
+
+.timeline-item{
+    position:relative;
+    padding-left:70px;
+    margin-bottom:40px;
+}
+
+.timeline-dot{
+    position:absolute;
+    left:12px;
+    top:8px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:var(--primary);
+    border:5px solid #fff;
+    box-shadow:0 0 0 4px rgba(34,197,94,.2);
+}
+
+.timeline-content{
+    background:#fff;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+}
+
+.timeline-content h4{
+    color:var(--dark);
+    margin-bottom:10px;
+}
+
+.timeline-content p{
+    color:var(--text);
+    line-height:1.7;
+}
+
+/* ===================================================
+   GALLERY
+=================================================== */
+
+.gallery-section{
+    padding:90px 0;
+    background:var(--light);
+}
+
+.gallery-section h2{
+    text-align:center;
+    margin-bottom:45px;
+    color:var(--dark);
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
+}
+
+.gallery-grid img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    border-radius:18px;
+    transition:.4s;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.04);
+}
+
+/* ===================================================
+   DONORS
+=================================================== */
+
+.donor-section{
+    padding:90px 0;
+    background:#fff;
+}
+
+.donor-section h2{
+    text-align:center;
+    margin-bottom:45px;
+    color:var(--dark);
+}
+
+.donor-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
+}
+
+.donor-card{
+    background:#fff;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    transition:.35s;
+}
+
+.donor-card:hover{
+    transform:translateY(-8px);
+}
+
+.donor-card h4{
+    color:var(--dark);
+    margin-bottom:10px;
+}
+
+.donor-card p{
+    color:var(--text);
+    margin:6px 0;
+}
+
+.donor-amount{
+    color:var(--primary);
+    font-size:1.3rem;
+    font-weight:700;
+}
+
+/* ===================================================
+   RELATED CAMPAIGNS
+=================================================== */
+
+.related-section{
+    padding:90px 0;
+    background:var(--light);
+}
+
+.related-section h2{
+    text-align:center;
+    margin-bottom:50px;
+    color:var(--dark);
+}
+
+.related-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.related-grid .campaign-card{
+    transition:.35s;
+}
+
+.related-grid .campaign-card:hover{
+    transform:translateY(-10px);
+}
+/* ===================================================
+   ANIMATIONS
+=================================================== */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes zoomIn{
+    from{
+        transform:scale(.95);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.campaign-hero,
+.story-section,
+.organizer-section,
+.timeline-section,
+.gallery-section,
+.donor-section,
+.related-section{
+    animation:fadeUp .8s ease both;
+}
+
+.hero-image img{
+    animation:zoomIn .8s ease;
+}
+
+/* ===================================================
+   IMAGE HOVER EFFECTS
+=================================================== */
+
+.hero-image{
+    overflow:hidden;
+    border-radius:24px;
+}
+
+.hero-image img{
+    transition:transform .5s ease;
+}
+
+.hero-image:hover img{
+    transform:scale(1.05);
+}
+
+/* ===================================================
+   CARD EFFECTS
+=================================================== */
+
+.story-content,
+.organizer-card,
+.timeline-content,
+.donor-card,
+.stat,
+.donation-card{
+    transition:all .35s ease;
+}
+
+.story-content:hover,
+.organizer-card:hover,
+.timeline-content:hover,
+.donor-card:hover,
+.stat:hover,
+.donation-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+}
+
+/* ===================================================
+   BUTTON EFFECTS
+=================================================== */
+
+.btn,
+.donate-btn,
+.amount-btn{
+    transition:all .3s ease;
+}
+
+.btn:hover,
+.donate-btn:hover{
+    transform:translateY(-3px);
+}
+
+.btn:active,
+.donate-btn:active{
+    transform:scale(.97);
+}
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+
+@media(max-width:1200px){
+
+.hero-grid{
+    gap:45px;
+}
+
+.campaign-stats{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:992px){
+
+.hero-grid{
+    grid-template-columns:1fr;
+}
+
+.story-grid{
+    grid-template-columns:1fr;
+}
+
+.sticky-card{
+    position:static;
+    margin-top:40px;
+}
+
+.hero-content{
+    text-align:center;
+}
+
+.hero-buttons{
+    justify-content:center;
+}
+
+.campaign-stats{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.organizer-card{
+    flex-direction:column;
+    text-align:center;
+}
+
+.organizer-stats{
+    justify-content:center;
+}
+
+}
+
+@media(max-width:768px){
+
+.campaign-hero{
+    padding:90px 0 60px;
+}
+
+.hero-content h1{
+    font-size:2.2rem;
+}
+
+.hero-image img{
+    height:340px;
+}
+
+.story-content{
+    padding:25px;
+}
+
+.campaign-stats{
+    grid-template-columns:1fr;
+}
+
+.hero-buttons{
+    flex-direction:column;
+}
+
+.btn{
+    width:100%;
+}
+
+.gallery-grid,
+.related-grid,
+.donor-grid{
+    grid-template-columns:1fr;
+}
+
+.timeline-item{
+    padding-left:55px;
+}
+
+.timeline::before{
+    left:20px;
+}
+
+.timeline-dot{
+    left:7px;
+}
+
+}
+
+@media(max-width:576px){
+
+.hero-content h1{
+    font-size:1.8rem;
+}
+
+.description{
+    font-size:1rem;
+}
+
+.category{
+    font-size:.85rem;
+}
+
+.story-content h2,
+.organizer-section h2,
+.timeline-section h2,
+.gallery-section h2,
+.donor-section h2,
+.related-section h2{
+    font-size:1.6rem;
+}
+
+.hero-image img{
+    height:260px;
+}
+
+.stat{
+    padding:18px;
+}
+
+}

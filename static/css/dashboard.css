@@ -1,0 +1,62 @@
+/* ======================================
+   DASHBOARD PAGE SPECIFIC CSS
+   KindKart v2
+====================================== */
+
+/* Dashboard Statistics */
+
+.dashboard-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:24px;
+
+margin-top:30px;
+
+}
+
+/* Individual Stat Card */
+
+.dashboard-card{
+
+min-height:170px;
+
+}
+
+/* Charts */
+
+.chart-section{
+
+margin-top:35px;
+
+}
+
+/* Recent Activity */
+
+.activity-list{
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+margin-top:25px;
+
+}
+
+/* Quick Actions */
+
+.quick-actions{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+gap:18px;
+
+margin-top:30px;
+
+}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ item['title'] }} | KindKart
+{% endblock %}
+
+{% block content %}
+
+<section class="container" style="padding:120px 0;">
+
+    <div class="back-link">
+    <a href="{{ url_for('marketplace') }}">
+        <i class="fas fa-arrow-left"></i>
+        Back to Marketplace
+    </a>
+</div>
+    <div class="item-details">
+
+        <div class="item-image">
+
+            <img src="{{ url_for('static', filename='uploads/' + (item['image'] or 'placeholder.png')) }}"
+                 alt="{{ item['title'] }}">
+
+        </div>
+
+        <div class="item-info">
+
+            <div class="badges">
+
+    <span class="badge">
+        {{ item['category'] }}
+    </span>
+
+    <span class="badge secondary">
+        {{ item['condition'] }}
+    </span>
+
+</div>
+
+            <h1>{{ item['title'] }}</h1>
+
+            <div class="price">
+    ₹ {{ item['price'] }}
+</div>
+
+            <div class="info-grid">
+
+    <div>
+        <span>Condition</span>
+        <strong>{{ item['condition'] }}</strong>
+    </div>
+
+    <div>
+        <span>Seller</span>
+        <strong>{{ item['full_name'] }}</strong>
+    </div>
+
+</div>
+
+<div class="info-section">
+
+    <h3>Description</h3>
+
+    <p>{{ item['description'] }}</p>
+
+</div>
+
+           <a href="mailto:{{ item['email'] }}" class="btn btn-primary">
+
+    <i class="fas fa-envelope"></i>
+
+    Contact Seller
+
+</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

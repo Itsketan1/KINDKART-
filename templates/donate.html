@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}Donate{% endblock %}
+
+{% block css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/pages/donate.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="donate-page">
+
+    <div class="container">
+
+        <div class="donate-grid">
+
+            <!-- LEFT -->
+
+            <div class="campaign-summary">
+
+                <img
+                    src="{{ url_for('static', filename=campaign.image) }}"
+                    alt="{{ campaign.title }}">
+
+                <span class="category">
+                    {{ campaign.category }}
+                </span>
+
+                <h1>{{ campaign.title }}</h1>
+
+                <p>
+                    {{ campaign.description }}
+                </p>
+
+                <div class="progress">
+
+                    <div class="progress-fill"
+                         style="width:{{ (campaign.raised/campaign.goal*100)|round }}%;">
+                    </div>
+
+                </div>
+
+                <div class="summary-stats">
+
+                    <div>
+                        <h3>${{ campaign.raised }}</h3>
+                        <p>Raised</p>
+                    </div>
+
+                    <div>
+                        <h3>${{ campaign.goal }}</h3>
+                        <p>Goal</p>
+                    </div>
+
+                    <div>
+                        <h3>{{ campaign.supporters }}</h3>
+                        <p>Supporters</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="donation-form">
+
+                <h2>Support this Campaign ❤️</h2>
+
+                <form method="POST">
+
+                    <h3>Select Amount</h3>
+
+                  <div class="amount-grid">
+
+    <label>
+        <input type="radio"
+               name="amount"
+               value="10"
+               required>
+        <span>₹100</span>
+    </label>
+
+    <label>
+        <input type="radio"
+               name="amount"
+               value="25">
+        <span>₹250</span>
+    </label>
+
+    <label>
+        <input type="radio"
+               name="amount"
+               value="50">
+        <span>₹500</span>
+    </label>
+
+    <label>
+        <input type="radio"
+               name="amount"
+               value="100">
+        <span>₹1000</span>
+    </label>
+
+</div>
+
+                    <input
+                        type="number"
+                        placeholder="Custom Amount">
+
+                    <h3>Donor Information</h3>
+
+                    <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    required>
+
+                   <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required>
+
+                    <input
+                    type="text"
+                    name="phone"
+                    placeholder="Phone Number">
+
+                    <h3>Payment Method</h3>
+
+                    <div class="payment-options">
+
+    <label>
+        <input type="radio"
+               name="payment"
+               value="UPI"
+               required>
+        UPI
+    </label>
+
+    <label>
+        <input type="radio"
+               name="payment"
+               value="Card">
+        Credit / Debit Card
+    </label>
+
+    <label>
+        <input type="radio"
+               name="payment"
+               value="Net Banking">
+        Net Banking
+    </label>
+
+</div>
+                    <button
+                        class="btn btn-primary donate-btn">
+
+                        Donate Securely ❤️
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,303 @@
+{% extends "dashboard_base.html" %}
+
+{% block title %}Sell an Item | KindKart{% endblock %}
+
+{% block content %}
+
+<section class="sell-hero">
+
+    <div class="hero-shape hero-left"></div>
+    <div class="hero-shape hero-right"></div>
+
+    <div class="sell-container">
+
+        <div class="hero-badge">
+            <i class="fas fa-store"></i>
+            Student Marketplace
+        </div>
+
+        <h1>Sell an Item</h1>
+
+        <p>
+            List your books, electronics, furniture and more for other students.
+            Give unused items a new home while earning money.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="sell-form-section">
+
+<div class="sell-card">
+
+<div class="card-header">
+
+<div class="header-icon">
+    <i class="fas fa-file-alt"></i>
+</div>
+
+<div>
+
+<h2>Item Information</h2>
+
+<p>
+Fill in the details below to publish your item.
+</p>
+
+</div>
+
+</div>
+
+<form
+action="{{ url_for('sell_item') }}"
+method="POST"
+enctype="multipart/form-data"
+class="sell-form"
+>
+
+<div class="form-group full">
+
+<label>Item Title</label>
+
+<input
+type="text"
+name="title"
+placeholder="Enter item title"
+required
+>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>Description</label>
+
+<textarea
+name="description"
+rows="6"
+maxlength="600"
+placeholder="Describe your item in detail..."
+required></textarea>
+
+<div class="char-counter">
+<span id="charCount">0</span>/600 characters
+</div>
+
+</div>
+
+<div class="grid-2">
+
+<div class="form-group">
+
+<label>Category</label>
+
+<select name="category" required>
+
+<option value="">Select Category</option>
+
+<option>Books</option>
+
+<option>Electronics</option>
+
+<option>Furniture</option>
+
+<option>Stationery</option>
+
+<option>Sports</option>
+
+<option>Hostel Essentials</option>
+
+<option>Other</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Condition</label>
+
+<select name="condition" required>
+
+<option value="">Select Condition</option>
+
+<option>New</option>
+
+<option>Like New</option>
+
+<option>Good</option>
+
+<option>Fair</option>
+
+<option>Used</option>
+
+</select>
+
+</div>
+
+</div>
+<!-- Price + Upload -->
+
+<div class="grid-2">
+
+    <!-- Price -->
+
+    <div class="form-group">
+
+        <label>Price (₹)</label>
+
+        <div class="price-input">
+
+            <span>₹</span>
+
+            <input
+                type="number"
+                name="price"
+                placeholder="Enter price"
+                min="0"
+                required>
+
+        </div>
+
+    </div>
+
+
+    <!-- Upload -->
+
+    <div class="form-group">
+
+        <label>Upload Image</label>
+
+        <div class="upload-box" id="uploadBox">
+
+            <input
+                type="file"
+                id="image"
+                name="image"
+                accept=".jpg,.jpeg,.png,.webp"
+                hidden>
+
+            <label for="image" class="upload-content">
+
+                <i class="fas fa-cloud-upload-alt"></i>
+
+                <h4>Drag & Drop Image</h4>
+
+                <p>or click to browse</p>
+
+                <small>
+                    JPG • PNG • WEBP <br>
+                    Maximum 5MB
+                </small>
+
+            </label>
+
+            <img
+                id="previewImage"
+                class="preview-image"
+                src="#"
+                alt="Preview">
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr class="divider">
+
+
+<div class="tips-box">
+    <div class="tip-icon">
+        <i class="fas fa-lightbulb"></i>
+    </div>
+
+    <div class="tips-content">
+        <h4>Tips for Better Listings</h4>
+        <p>Follow these simple tips to attract more buyers and sell your item faster.</p>
+
+        <ul class="tips-list">
+            <li>Upload clear, high-quality photos</li>
+            <li>Write an honest and detailed description</li>
+            <li>Select the correct category</li>
+            <li>Set a fair and competitive price</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+
+<div class="publish-area">
+
+    <button
+        type="submit"
+        class="publish-btn">
+
+        <i class="fas fa-paper-plane"></i>
+
+        Publish Item
+
+    </button>
+
+    <p>
+
+        Your listing will be visible after admin approval.
+
+    </p>
+
+</div>
+
+</form>
+
+</div>
+
+</section>
+<script>
+
+const textarea=document.querySelector("textarea");
+
+const counter=document.getElementById("charCount");
+
+textarea.addEventListener("input",()=>{
+
+counter.textContent=textarea.value.length;
+
+});
+
+
+
+const input=document.getElementById("image");
+
+const preview=document.getElementById("previewImage");
+
+const upload=document.getElementById("uploadBox");
+
+
+input.addEventListener("change",(e)=>{
+
+const file=e.target.files[0];
+
+if(!file)return;
+
+const reader=new FileReader();
+
+reader.onload=function(event){
+
+preview.src=event.target.result;
+
+preview.style.display="block";
+
+upload.classList.add("uploaded");
+
+}
+
+reader.readAsDataURL(file);
+
+});
+
+</script>
+
+{% endblock %}

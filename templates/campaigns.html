@@ -1,0 +1,566 @@
+{% extends "base.html" %}
+
+{% block title %}Community Campaigns | KindKart{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/campaigns.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ===========================
+        CAMPAIGN HERO
+============================ -->
+
+<section class="campaign-hero">
+
+    <div class="hero-bg-circle circle-1"></div>
+    <div class="hero-bg-circle circle-2"></div>
+    <div class="hero-grid-pattern"></div>
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <!-- LEFT CONTENT -->
+
+            <div class="hero-left">
+
+                <span class="hero-badge">
+                    🌱 Community Impact Platform
+                </span>
+
+                <h1>
+                    Together We Build
+                    <span>Stronger Communities.</span>
+                </h1>
+
+                <p>
+                    Discover verified fundraising campaigns supporting
+                    education, healthcare, food security, sustainability,
+                    and emergency relief. Every contribution creates
+                    meaningful change.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#campaigns" class="btn btn-primary">
+                        Explore Campaigns
+                    </a>
+
+                    <a href="#" class="btn btn-outline">
+                        Start a Campaign
+                    </a>
+
+                </div>
+
+                <div class="hero-trust">
+
+                    <div class="trust-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Verified Campaigns
+                    </div>
+
+                    <div class="trust-item">
+                        <i class="fa-solid fa-shield-heart"></i>
+                        Secure Donations
+                    </div>
+
+                    <div class="trust-item">
+                        <i class="fa-solid fa-users"></i>
+                        Community Driven
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT CONTENT -->
+
+            <div class="hero-right">
+
+                <div class="floating-card donation-card">
+
+                    <div class="floating-icon">
+                        ❤️
+                    </div>
+
+                    <h4>Funds Raised</h4>
+
+                    <h2>$245K</h2>
+
+                    <small>Across all campaigns</small>
+
+                </div>
+
+                <div class="floating-card hero-campaign-card">
+
+                    <div class="floating-icon">
+                        📚
+                    </div>
+
+                    <h4>Education Drive</h4>
+
+                    <div class="progress">
+
+                        <div class="progress-bar">
+
+                            <div class="progress-fill" style="width:72%;"></div>
+
+                        </div>
+
+                        <span>72%</span>
+
+                    </div>
+
+                </div>
+
+                <div class="floating-card supporters-card">
+
+                    <div class="floating-icon">
+                        👥
+                    </div>
+
+                    <h4>Supporters</h4>
+
+                    <h2>820+</h2>
+
+                    <small>Growing every day</small>
+
+                </div>
+
+                <div class="hero-illustration">
+
+                    <div class="pulse pulse-1"></div>
+                    <div class="pulse pulse-2"></div>
+                    <div class="pulse pulse-3"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+        LIVE IMPACT
+============================ -->
+
+<section class="impact-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-tag">
+                Live Impact
+            </span>
+
+            <h2>
+                Real Numbers.
+                <span>Real Change.</span>
+            </h2>
+
+            <p>
+                Every campaign contributes toward building stronger,
+                healthier, and more connected communities.
+            </p>
+
+        </div>
+
+        <div class="impact-grid">
+
+            <!-- CARD -->
+
+            <div class="impact-card">
+
+                <div class="impact-icon">
+
+                    <i class="fa-solid fa-seedling"></i>
+
+                </div>
+
+                <h3>14</h3>
+
+                <p>Active Campaigns</p>
+
+            </div>
+
+            <!-- CARD -->
+
+            <div class="impact-card">
+
+                <div class="impact-icon">
+
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+
+                </div>
+
+                <h3>$245K</h3>
+
+                <p>Funds Raised</p>
+
+            </div>
+
+            <!-- CARD -->
+
+            <div class="impact-card">
+
+                <div class="impact-icon">
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+                <h3>820+</h3>
+
+                <p>Supporters</p>
+
+            </div>
+
+            <!-- CARD -->
+
+            <div class="impact-card">
+
+                <div class="impact-icon">
+
+                    <i class="fa-solid fa-award"></i>
+
+                </div>
+
+                <h3>96%</h3>
+
+                <p>Successful Campaigns</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+    FEATURED CAMPAIGN STARTS HERE
+============================ -->
+<!-- ===========================
+    FEATURED CAMPAIGN STARTS HERE
+============================ -->
+
+<section class="featured-campaign">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-tag">
+                Featured Campaign
+            </span>
+
+            <h2>
+                Help Us Build Better Futures
+            </h2>
+
+            <p>
+                This campaign is gaining incredible community support.
+                Join hundreds of donors making education accessible to
+                every child.
+            </p>
+
+        </div>
+
+        <div class="featured-card">
+
+            <!-- LEFT IMAGE -->
+
+            <div class="featured-image">
+
+                <img
+                    src="{{ url_for('static', filename='images/campaigns/featured.jpg') }}"
+                    alt="School Supplies Campaign">
+
+                <span class="featured-badge">
+
+                    ⭐ Featured
+
+                </span>
+
+            </div>
+
+            <!-- RIGHT CONTENT -->
+
+            <div class="featured-content">
+
+                <span class="campaign-category">
+    {{ featured.category }}
+</span>
+                <h3>
+
+                    School Supplies For Rural Students
+
+                </h3>
+
+                <p>
+    {{ featured.description }}
+</p>
+
+                <!-- Progress -->
+
+                <div class="campaign-progress">
+
+                    <div class="progress-top">
+
+                        <span>72% Funded</span>
+
+                        <span>$36,000 Raised</span>
+
+                    </div>
+
+                    <div class="progress-bar">
+
+                        <div class="progress-fill"
+                             style="width:72%;">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Statistics -->
+
+                <div class="campaign-meta">
+
+                    <div class="meta-card">
+
+                       <h4>${{ featured.raised }}</h4>
+
+                        <p>Raised</p>
+
+                    </div>
+
+                    <div class="meta-card">
+
+                        <h4>${{ featured.goal }}</h4>
+
+                        <p>Goal</p>
+
+                    </div>
+
+                    <div class="meta-card">
+
+                       <h4>{{ featured.days_left }}</h4>
+
+                        <p>Days Left</p>
+
+                    </div>
+
+                </div>
+
+               <a href="{{ url_for('campaign_details', campaign_id=featured.id) }}"
+   class="featured-button">
+
+    View Campaign
+    <i class="fa-solid fa-arrow-right"></i>
+
+</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+        CAMPAIGN LIST
+============================ -->
+
+<div class="campaign-grid">
+
+    {% if campaigns %}
+
+        {% for campaign in campaigns %}
+
+            {% include "components/campaign_card.html" %}
+
+        {% endfor %}
+
+    {% else %}
+
+        {% include "components/empty_state.html" %}
+
+    {% endif %}
+
+</div>
+
+<!-- ===========================
+    WHY KINDKART STARTS HERE
+============================ -->
+<section class="why-kindkart">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-tag">
+                Why KindKart
+            </span>
+
+            <h2>
+                Trusted By Communities,
+                <span>Built For Impact.</span>
+            </h2>
+
+            <p>
+                Every campaign on KindKart is carefully reviewed to ensure
+                transparency, accountability, and meaningful social impact.
+            </p>
+
+        </div>
+
+        <div class="why-grid">
+
+            <!-- Feature 1 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-shield-heart"></i>
+
+                </div>
+
+                <h3>
+                    Verified Campaigns
+                </h3>
+
+                <p>
+                    Every campaign undergoes a review process before
+                    becoming visible to ensure authenticity and trust.
+                </p>
+
+            </div>
+
+            <!-- Feature 2 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+                <h3>
+                    Transparent Progress
+                </h3>
+
+                <p>
+                    Watch donations grow in real time with clear funding
+                    goals, progress tracking and campaign updates.
+                </p>
+
+            </div>
+
+            <!-- Feature 3 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+
+                </div>
+
+                <h3>
+                    Community First
+                </h3>
+
+                <p>
+                    Every contribution directly supports people,
+                    students and local communities in need.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===========================
+        CALL TO ACTION
+============================ -->
+
+<section class="campaign-cta">
+
+    <div class="container">
+
+        <div class="cta-card">
+
+            <div class="cta-content">
+
+                <span class="section-tag">
+
+                    Make an Impact
+
+                </span>
+
+                <h2>
+
+                    Every Contribution
+                    Creates Another Smile.
+
+                </h2>
+
+                <p>
+
+                    Whether you donate, volunteer,
+                    or launch your own campaign,
+                    you become part of someone's journey.
+
+                </p>
+
+                <div class="cta-buttons">
+
+                    <a href="#campaigns"
+                       class="btn btn-primary">
+
+                        Explore Campaigns
+
+                    </a>
+
+                    <a href="#"
+                       class="btn btn-light">
+
+                        Start Campaign
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="cta-decoration">
+
+                <div class="floating-circle circle-one"></div>
+                <div class="floating-circle circle-two"></div>
+                <div class="floating-circle circle-three"></div>
+
+                <i class="fa-solid fa-heart heart-icon"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

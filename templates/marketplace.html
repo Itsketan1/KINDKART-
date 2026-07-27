@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}
+Student Marketplace | KindKart
+{% endblock %}
+
+{% block content %}
+
+<section class="marketplace">
+
+    <div class="container">
+
+        <!-- ===========================
+             PAGE HEADER
+        ============================ -->
+
+        <div class="section-header">
+
+    <span class="badge">
+        🛒 Student Marketplace
+    </span>
+
+    <h2>Buy & Sell Student Essentials</h2>
+
+    <p>
+        Discover affordable books, electronics, furniture and more from
+        fellow students. Give your unused items a second life while helping
+        your campus community.
+    </p>
+
+    <div class="hero-actions">
+        <a href="/sell-item" class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+            Sell an Item
+        </a>
+    </div>
+
+</div>
+        <!-- ===========================
+             SELL BUTTON
+        ============================ -->
+
+        
+        <!-- ===========================
+             PRODUCTS GRID
+        ============================ -->
+
+        <div class="market-grid">
+
+            {% if items %}
+
+                {% for item in items %}
+
+                <div class="market-card">
+
+                    <img
+                        src="{{ url_for('static', filename='uploads/' + (item['image'] or 'placeholder.png')) }}"
+                        alt="{{ item['title'] }}">
+
+                    <div class="market-content">
+
+                        <span class="market-category">
+
+                            {{ item["category"] }}
+
+                        </span>
+
+                        <h3>
+
+                            {{ item["title"] }}
+
+                        </h3>
+
+                        <p>
+
+                            {{ item["description"][:80] }}{% if item["description"]|length > 80 %}...{% endif %}
+
+                        </p>
+
+                        <h4>
+
+                            ₹ {{ item["price"] }}
+
+                        </h4>
+
+                        <p class="seller-name">
+
+                            <strong>Seller:</strong>
+                            {{ item["full_name"] }}
+
+                        </p>
+
+                        <a
+                            href="{{ url_for('item_details', item_id=item['id']) }}"
+                            class="btn btn-primary">
+
+                            View Details
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="empty-market">
+
+                    <h3>No Items Available</h3>
+
+                    <p>
+
+                        Be the first student to list an item for sale!
+
+                    </p>
+
+                    <a
+                        href="/sell-item"
+                        class="btn btn-primary">
+
+                        Sell Your First Item
+
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

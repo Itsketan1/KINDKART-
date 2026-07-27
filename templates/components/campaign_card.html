@@ -1,0 +1,71 @@
+{% set progress=((campaign.raised/campaign.goal)*100)|round(0) %}
+
+<article class="campaign-card">
+
+    <div class="campaign-image">
+
+        <img
+    src="{{ url_for('static', filename=campaign.image if campaign.image else 'images/default-campaign.jpg') }}"
+    alt="{{ campaign.title }}"
+    loading="lazy"
+    decoding="async">
+
+        <span class="campaign-badge">
+
+            {{ campaign.category }}
+
+        </span>
+
+    </div>
+
+    <div class="campaign-content">
+
+        <h3>{{ campaign.title }}</h3>
+
+        <p>{{ campaign.description }}</p>
+
+        {% include "components/progress_bar.html" %}
+
+        <div class="campaign-info">
+
+            <span>
+
+                ${{ campaign.raised }}
+
+            </span>
+
+            <span>
+
+                Goal
+
+                ${{ campaign.goal }}
+
+            </span>
+
+        </div>
+
+        <div class="campaign-footer">
+
+            <span>
+
+                {{ campaign.days_left }}
+
+                Days Left
+
+            </span>
+
+            <a
+
+                href="{{ url_for('campaign_details', campaign_id=campaign.id) }}"
+
+                aria-label="View {{ campaign.title }}">
+
+                View →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</article>

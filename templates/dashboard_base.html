@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>
+
+{% block title %}
+
+Dashboard
+
+{% endblock %}
+
+</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/variables.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/base.css') }}">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_theme.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/animations.css') }}">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sell_item.css') }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <div class="logo-icon">
+            <i class="fas fa-leaf"></i>
+        </div>
+
+        <div>
+
+            <h2>KindKart</h2>
+
+            <small>Student Marketplace</small>
+
+        </div>
+
+    </div>
+
+    <nav>
+
+        <a href="/dashboard"
+        class="{% if request.path=='/dashboard' %}active{% endif %}">
+
+            <i class="fas fa-home"></i>
+
+            Dashboard
+
+        </a>
+
+        <a href="/campaigns"
+        class="{% if request.path=='/campaigns' %}active{% endif %}">
+
+            <i class="fas fa-hand-holding-heart"></i>
+
+            Campaigns
+
+        </a>
+
+        <a href="/marketplace"
+        class="{% if request.path=='/marketplace' %}active{% endif %}">
+
+            <i class="fas fa-store"></i>
+
+            Marketplace
+
+        </a>
+
+        <a href="/sell-item"
+        class="{% if request.path=='/sell-item' %}active{% endif %}">
+
+            <i class="fas fa-tag"></i>
+
+            Sell Item
+
+        </a>
+
+        <a href="#">
+
+            <i class="fas fa-comments"></i>
+
+            Messages
+
+        </a>
+
+        <a href="#">
+
+            <i class="fas fa-user"></i>
+
+            Profile
+
+        </a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+
+        <a href="/logout">
+
+            <i class="fas fa-sign-out-alt"></i>
+
+            Logout
+
+        </a>
+
+        <small>
+
+            Version 1.0
+
+        </small>
+
+    </div>
+
+</aside>
+
+<div class="dashboard-main">
+
+<header class="dashboard-header">
+
+    <div>
+
+        <span class="welcome-badge">
+
+            👋 Welcome Back
+
+        </span>
+
+        <h3>
+
+            {{ session.get('user_name') }}
+
+        </h3>
+
+        <p>
+
+            Manage your marketplace and campaigns from one place.
+
+        </p>
+
+    </div>
+
+    <div class="header-actions">
+
+        <button class="icon-btn">
+
+            <i class="fas fa-bell"></i>
+
+        </button>
+
+        <button class="icon-btn">
+
+            <i class="fas fa-gear"></i>
+
+        </button>
+
+        <div class="profile-chip">
+
+            <div class="avatar">
+
+                {{ session.get('user_name')[0]|upper }}
+
+            </div>
+
+            <span>
+
+                {{ session.get('user_name') }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+</header>
+<main>
+
+{% block content %}
+
+{% endblock %}
+
+</main>
+
+</div>
+
+<script
+src="{{ url_for('static',filename='js/script.js') }}">
+</script>
+
+</body>
+
+</html>

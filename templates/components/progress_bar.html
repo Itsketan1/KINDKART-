@@ -1,0 +1,23 @@
+{% set progress=((campaign.raised/campaign.goal)*100)|round(0) %}
+
+<div class="campaign-progress">
+
+    <div class="progress-top">
+
+        <span>{{ progress }}%</span>
+
+        <span>${{ campaign.raised }}</span>
+
+    </div>
+
+    <div class="progress-bar">
+
+        <div
+            class="progress-fill"
+            style="width:{{ progress }}%;">
+
+        </div>
+
+    </div>
+
+</div>

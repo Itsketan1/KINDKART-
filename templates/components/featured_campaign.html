@@ -1,0 +1,87 @@
+{% set progress=((featured.raised/featured.goal)*100)|round(0) %}
+
+<div class="featured-card">
+
+    <div class="featured-image">
+    <span class="featured-badge">
+    ⭐ Featured
+</span>
+        <img
+
+            src="{{ url_for('static', filename=featured.image) }}"
+
+            alt="{{ featured.title }}"
+
+            loading="lazy"
+
+            decoding="async">
+
+    </div>
+
+    <div class="featured-content">
+
+        <span class="campaign-category">
+
+            {{ featured.category }}
+
+        </span>
+
+        <h2>{{ featured.title }}</h2>
+
+        <p>{{ featured.description }}</p>
+
+        <div class="campaign-progress">
+
+            <div class="progress-top">
+
+                <span>{{ progress }}%</span>
+
+                <span>${{ featured.raised }}</span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    style="width:{{ progress }}%;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="campaign-info">
+
+            <span>
+
+                Goal
+
+                ${{ featured.goal }}
+
+            </span>
+
+            <span>
+
+                {{ featured.days_left }}
+
+                Days Left
+
+            </span>
+
+        </div>
+
+        <a
+
+            href="{{ url_for('campaign_details', campaign_id=featured.id) }}"
+
+            class="btn btn-primary">
+
+            View Campaign
+
+        </a>
+
+    </div>
+
+</div>

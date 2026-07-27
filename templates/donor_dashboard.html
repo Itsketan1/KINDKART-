@@ -1,0 +1,93 @@
+{% extends "dashboard_base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<section class="dashboard">
+
+<div class="container">
+
+<h1>
+
+Welcome,
+
+{{ name }}
+
+👋
+
+</h1>
+
+<p>
+
+You are successfully logged into KindKart.
+
+</p>
+
+<div class="dashboard-grid">
+
+<div class="dashboard-card">
+
+<h2>
+
+My Donations
+
+</h2>
+
+<p>
+
+0 Donations
+
+</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<h2>
+
+Saved Items
+
+</h2>
+
+<p>
+
+0 Items
+
+</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<h2>
+
+Campaigns Supported
+
+</h2>
+
+<p>
+
+0 Campaigns
+
+</p>
+
+</div>
+
+</div>
+
+<a
+href="/logout"
+class="btn btn-primary">
+
+Logout
+
+</a>
+
+</div>
+
+</section>
+
+{% endblock %}

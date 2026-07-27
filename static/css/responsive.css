@@ -1,0 +1,42 @@
+@media(max-width:992px){
+
+.hero-container{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.hero-left p{
+    margin:auto auto 35px;
+}
+
+.hero-buttons,
+.hero-stats{
+    justify-content:center;
+}
+
+.hero-right{
+    margin-top:40px;
+}
+
+}
+
+@media(max-width:768px){
+
+.nav-links{
+    display:none;
+}
+
+#menuBtn{
+    display:block;
+}
+
+.hero-left h1{
+    font-size:3rem;
+}
+
+.hero-stats{
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+}
