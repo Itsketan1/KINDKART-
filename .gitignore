@@ -31,3 +31,5 @@ Thumbs.db
 # Uploaded Files (optional)
 static/uploads/*
 !static/uploads/.gitkeep
+
+database/*.db
