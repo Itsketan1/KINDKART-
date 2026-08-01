@@ -1,6 +1,33 @@
+# Python
 __pycache__/
-*.pyc
-instance/
-database/kindkart.db
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Database
+database/*.db
+instance/*.db
+
+# Environment Variables
 .env
+
+# VS Code
 .vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Uploaded Files (optional)
+static/uploads/*
+!static/uploads/.gitkeep

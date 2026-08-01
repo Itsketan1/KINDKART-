@@ -463,3 +463,156 @@ body.dark #menuBtn{
     color:white;
 
 }
+/* ==========================================
+   KINDKART PREMIUM BACKGROUND
+========================================== */
+
+body{
+    background:
+        radial-gradient(circle at 8% 10%, rgba(76,175,80,.12), transparent 28%),
+        radial-gradient(circle at 92% 22%, rgba(129,199,132,.10), transparent 30%),
+        radial-gradient(circle at 15% 88%, rgba(33,150,243,.06), transparent 28%),
+        linear-gradient(180deg,#ffffff 0%,#f8fffb 45%,#ffffff 100%);
+}
+
+section{
+    position:relative;
+    overflow:hidden;
+}
+
+section::before{
+    content:"";
+    position:absolute;
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    background:rgba(76,175,80,.05);
+    filter:blur(90px);
+    top:-140px;
+    left:-140px;
+    pointer-events:none;
+}
+
+section:nth-child(even)::before{
+    left:auto;
+    right:-140px;
+    background:rgba(76,175,80,.04);
+}
+
+.container{
+    position:relative;
+    z-index:2;
+}
+.features,
+.testimonials{
+    background:#F8FAFC;
+}
+
+.marketplace-preview{
+    background:#ffffff;
+}
+
+.campaign-preview{
+    background:#F7FCF8;
+}
+
+.cta-section{
+    background:#ffffff;
+}
+.market-card,
+.campaign-card,
+.feature-card,
+.testimonial-card{
+    transition:all .35s ease;
+}
+
+.market-card:hover,
+.campaign-card:hover,
+.feature-card:hover,
+.testimonial-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 30px 60px rgba(46,125,50,.12);
+}
+.section-wave{
+    width:100%;
+    line-height:0;
+    margin-top:-2px;
+}
+
+.section-wave svg{
+    display:block;
+    width:100%;
+    height:90px;
+}
+
+.hero{
+    background:#ffffff;
+}
+
+.features{
+    background:#F4FFF7;
+}
+
+.marketplace-preview{
+    background:#ffffff;
+}
+
+.campaign-preview{
+    background:#F4FFF7;
+}
+
+.testimonials{
+    background:#ffffff;
+}
+
+.cta-section{
+    background:#F4FFF7;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    z-index:-1;
+    border-radius:50%;
+    filter:blur(120px);
+}
+
+body::before{
+    width:700px;
+    height:700px;
+    left:-250px;
+    top:-150px;
+    background:#B9F6CA;
+}
+
+body::after{
+    width:650px;
+    height:650px;
+    right:-220px;
+    bottom:-180px;
+    background:#BBDEFB;
+}
+.btn-danger{
+
+    background:#DC2626;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-danger:hover{
+
+    background:#B91C1C;
+
+}

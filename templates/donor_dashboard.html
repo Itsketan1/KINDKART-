@@ -4,90 +4,119 @@
 Dashboard
 {% endblock %}
 
+
+
 {% block content %}
 
 <section class="dashboard">
 
 <div class="container">
 
-<h1>
-
-Welcome,
-
-{{ name }}
-
-👋
-
-</h1>
-
-<p>
-
-You are successfully logged into KindKart.
-
-</p>
+<!-- Statistics -->
 
 <div class="dashboard-grid">
 
 <div class="dashboard-card">
-
-<h2>
-
-My Donations
-
-</h2>
-
-<p>
-
-0 Donations
-
-</p>
-
+    <i class="fas fa-book-open dashboard-icon"></i>
+    <h2>12</h2>
+    <p>Donations Made</p>
+    <small>+4 this month</small>
 </div>
 
 <div class="dashboard-card">
-
-<h2>
-
-Saved Items
-
-</h2>
-
-<p>
-
-0 Items
-
-</p>
-
+    <i class="fas fa-store dashboard-icon"></i>
+    <h2>8</h2>
+    <p>My Listings</p>
+    <small>2 Active</small>
 </div>
 
 <div class="dashboard-card">
+    <i class="fas fa-heart dashboard-icon"></i>
+    <h2>21</h2>
+    <p>Saved Items</p>
+    <small>Updated Today</small>
+</div>
 
-<h2>
-
-Campaigns Supported
-
-</h2>
-
-<p>
-
-0 Campaigns
-
-</p>
-
+<div class="dashboard-card">
+    <i class="fas fa-bullseye dashboard-icon"></i>
+    <h2>5</h2>
+    <p>Campaigns Supported</p>
+    <small>1 Ending Soon</small>
 </div>
 
 </div>
 
-<a
-href="/logout"
-class="btn btn-primary">
+<!-- Quick Actions -->
 
-Logout
+<section class="chart-section">
 
+<h2>Quick Actions</h2>
+
+<div class="quick-actions">
+
+<a href="/sell-item" class="dashboard-action">
+    <i class="fas fa-tag"></i>
+    <span>Sell Item</span>
+</a>
+
+<a href="/marketplace" class="dashboard-action">
+    <i class="fas fa-store"></i>
+    <span>Marketplace</span>
+</a>
+
+<a href="/campaigns" class="dashboard-action">
+    <i class="fas fa-hand-holding-heart"></i>
+    <span>Campaigns</span>
+</a>
+
+<a href="/contact" class="dashboard-action">
+    <i class="fas fa-comments"></i>
+    <span>Messages</span>
 </a>
 
 </div>
 
 </section>
 
+<!-- Recent Activity -->
+
+<section class="chart-section">
+
+<h2>Recent Activity</h2>
+
+<div class="activity-list">
+
+<div class="activity-item">
+    <i class="fas fa-book-open"></i>
+    <div>
+        <strong>Engineering Mathematics donated</strong>
+        <p>2 hours ago</p>
+    </div>
+</div>
+
+<div class="activity-item">
+    <i class="fas fa-chair"></i>
+    <div>
+        <strong>Wooden Chair listed</strong>
+        <p>Yesterday</p>
+    </div>
+</div>
+
+<div class="activity-item">
+    <i class="fas fa-heart"></i>
+    <div>
+        <strong>You supported "Education For All"</strong>
+        <p>3 days ago</p>
+    </div>
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+</section>
+
 {% endblock %}
+

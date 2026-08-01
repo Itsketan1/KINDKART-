@@ -52,7 +52,71 @@
 
         </div>
 
+        <!-- Hero Right -->
+
+<div class="hero-right">
+
+    <div class="hero-image">
+
+        <!-- Background Decorative Elements -->
+        <div class="hero-blob"></div>
+        <div class="hero-ring"></div>
+
+        <img class="leaf leaf-1"
+             src="{{ url_for('static', filename='images/hero/leaf1.svg') }}"
+             alt="">
+
+        <img class="leaf leaf-2"
+             src="{{ url_for('static', filename='images/hero/leaf2.svg') }}"
+             alt="">
+
+        <img class="hero-sketch"
+             src="{{ url_for('static', filename='images/hero/sketch.svg') }}"
+             alt="">
+
+        <!-- Main Illustration -->
+        <img
+            src="{{ url_for('static', filename='images/home-hero.svg') }}"
+            alt="KindKart Hero">
+
+        <!-- Floating Card 1 -->
+        <div class="floating-card card-one">
+            <span class="card-icon">❤️</span>
+            <div>
+                <strong>500+</strong>
+                <p>Lives Impacted</p>
+            </div>
+        </div>
+
+        <!-- Floating Card 2 -->
+        <div class="floating-card card-two">
+            <span class="card-icon">📚</span>
+            <div>
+                <strong>1200+</strong>
+                <p>Books Reused</p>
+            </div>
+        </div>
+
+        <!-- Floating Card 3 -->
+        <div class="floating-card card-three">
+            <span class="card-icon">🤝</span>
+            <div>
+                <strong>75+</strong>
+                <p>NGO Partners</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 </section>
+<div class="section-wave">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path fill="#F4FFF7"
+              d="M0,64L80,74.7C160,85,320,107,480,101.3C640,96,800,64,960,53.3C1120,43,1280,53,1360,58.7L1440,64V120H0Z">
+        </path>
+    </svg>
+</div>
 <!-- ==========================
         FEATURES
 =========================== -->
@@ -177,7 +241,13 @@
 
 </section>
 
-
+<div class="section-wave">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path fill="#F4FFF7"
+              d="M0,64L80,74.7C160,85,320,107,480,101.3C640,96,800,64,960,53.3C1120,43,1280,53,1360,58.7L1440,64V120H0Z">
+        </path>
+    </svg>
+</div>
 <!-- ==========================
     FEATURED MARKETPLACE
 =========================== -->
@@ -258,8 +328,15 @@
 
 </section>
 
+<div class="section-wave">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path fill="#F4FFF7"
+              d="M0,64L80,74.7C160,85,320,107,480,101.3C640,96,800,64,960,53.3C1120,43,1280,53,1360,58.7L1440,64V120H0Z">
+        </path>
+    </svg>
+</div>
 <!-- ==========================
-    FEATURED CAMPAIGNS
+     FEATURED CAMPAIGNS
 =========================== -->
 
 <section class="campaign-preview">
@@ -267,35 +344,24 @@
     <div class="container">
 
         <div class="section-header">
-
-            <span class="badge">
-
-                Featured Campaigns
-
-            </span>
-
-            <h2>
-
-                Make a Difference Today
-
-            </h2>
-
+            <span class="badge">Featured Campaigns</span>
+            <h2>Make a Difference Today</h2>
         </div>
 
         <div class="campaign-grid">
 
+            <!-- CARD 1 -->
+
            <div class="campaign-card">
 
-    <img src="{{ url_for('static', filename='images/campaign1.jpg') }}"
-         alt="Education Campaign">
+    <div class="campaign-image">
+        <img src="{{ url_for('static', filename='images/campaigns/education.jpg') }}" alt="Education">
+        <span class="campaign-badge">Education</span>
+    </div>
 
     <div class="campaign-content">
 
-        <span class="badge">
-            Education
-        </span>
-
-        <h3>Education For Every Child</h3>
+       <h3>Bright Futures</h3>
 
         <p>
             Help provide books and school kits to underprivileged children.
@@ -303,28 +369,18 @@
 
         <div class="campaign-progress">
 
-            <div class="progress-bar">
-                <div class="progress-fill" style="width:75%;"></div>
-            </div>
+    <div class="campaign-info">
+        <span>Raised ₹45,000</span>
+        <span>Goal ₹60,000</span>
+    </div>
 
-            <div class="campaign-stats">
+    <div class="progress-bar">
+        <div class="progress-fill" style="width:75%;"></div>
+    </div>
 
-                <span>
-                    Raised
-                    <strong>₹45,000</strong>
-                </span>
+</div>
 
-                <span>
-                    Goal
-                    <strong>₹60,000</strong>
-                </span>
-
-            </div>
-
-        </div>
-
-        <a href="{{ url_for('campaigns') }}"
-           class="btn btn-primary">
+        <a href="{{ url_for('campaigns') }}" class="btn btn-primary">
             Donate Now
         </a>
 
@@ -332,68 +388,86 @@
 
 </div>
 
-            <div class="campaign-card">
+           <div class="campaign-card">
 
-                <img src="{{ url_for('static', filename='images/campaign2.jpg') }}"
-                    alt="Campaign">
+    <div class="campaign-image">
+        <img src="{{ url_for('static', filename='images/campaigns/foods.jpg') }}" alt="Food">
+        <span class="campaign-badge">Food</span>
+    </div>
 
-                <div class="campaign-content">
+    <div class="campaign-content">
 
-                    <h3>
+        <h3>Food Donation Drive</h3>
 
-                        Food Donation Drive
+        <p>
+            Support families by contributing essential food supplies.
+        </p>
 
-                    </h3>
+       <div class="campaign-progress">
 
-                    <p>
+    <div class="campaign-info">
+        <span>Raised ₹34,000</span>
+        <span>Goal ₹50,000</span>
+    </div>
 
-                        Support families by contributing
-                        essential food supplies.
+    <div class="progress-bar">
+        <div class="progress-fill" style="width:68%;"></div>
+    </div>
 
-                    </p>
-
-                  <a href="{{ url_for('campaigns') }}"
-   class="btn btn-primary">
-    View Campaign
-</a>
-                </div>
-
-            </div>
-
-            <div class="campaign-card">
-
-                <img src="{{ url_for('static', filename='images/campaign3.jpg') }}"
-                    alt="Campaign">
-
-                <div class="campaign-content">
-
-                    <h3>
-
-                        Student Essentials
-
-                    </h3>
-
-                    <p>
-
-                        Donate furniture,
-                        laptops,
-                        books and stationery.
-
-                    </p>
-
-                 <a href="{{ url_for('campaigns') }}"
-   class="btn btn-primary">
-    View Campaign
-</a>
-                </div>
-
-            </div>
-
-        </div>
+</div>
+        <a href="{{ url_for('campaigns') }}" class="btn btn-primary">
+            View Campaign
+        </a>
 
     </div>
 
+</div>
+
+           <div class="campaign-card">
+
+    <div class="campaign-image">
+        <img src="{{ url_for('static', filename='images/campaigns/trees.jpg') }}" alt="Tree Plantation">
+        <span class="campaign-badge">Essentials</span>
+    </div>
+
+    <div class="campaign-content">
+
+        <h3>Student Essentials</h3>
+
+        <p>
+            Donate furniture, laptops, books and stationery to students.
+        </p>
+
+      <div class="campaign-progress">
+
+    <div class="campaign-info">
+        <span>Raised ₹30,000</span>
+        <span>Goal ₹50,000</span>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-fill" style="width:60%;"></div>
+    </div>
+
+</div>
+
+        <a href="{{ url_for('campaigns') }}" class="btn btn-primary">
+            View Campaign
+        </a>
+
+    </div>
+
+</div>
+
 </section>
+
+<div class="section-wave">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path fill="#F4FFF7"
+              d="M0,64L80,74.7C160,85,320,107,480,101.3C640,96,800,64,960,53.3C1120,43,1280,53,1360,58.7L1440,64V120H0Z">
+        </path>
+    </svg>
+</div>
 <!-- ==========================
         TESTIMONIALS
 =========================== -->
@@ -432,7 +506,7 @@
 
                 <div class="testimonial-user">
 
-                    <img src="{{ url_for('static', filename='images/user1.jpg') }}"
+                    <img src="{{ url_for('static', filename='images/users/user1.jpg') }}"
                          alt="Rahul">
 
                     <div>
@@ -459,7 +533,7 @@
 
                 <div class="testimonial-user">
 
-                    <img src="{{ url_for('static', filename='images/user2.jpg') }}"
+                    <img src="{{ url_for('static', filename='images/users/user2.jpg') }}"
                          alt="Priya">
 
                     <div>
@@ -486,7 +560,7 @@
 
                 <div class="testimonial-user">
 
-                    <img src="{{ url_for('static', filename='images/user3.jpg') }}"
+                    <img src="{{ url_for('static', filename='images/users/user3.jpg') }}"
                          alt="Smile Foundation">
 
                     <div>
@@ -507,6 +581,13 @@
 
 </section>
 
+<div class="section-wave">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path fill="#F4FFF7"
+              d="M0,64L80,74.7C160,85,320,107,480,101.3C640,96,800,64,960,53.3C1120,43,1280,53,1360,58.7L1440,64V120H0Z">
+        </path>
+    </svg>
+</div>
 <!-- ==========================
         CALL TO ACTION
 =========================== -->

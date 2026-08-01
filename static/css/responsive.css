@@ -40,3 +40,237 @@
 }
 
 }
+
+/* ===========================
+   ABOUT PAGE
+=========================== */
+
+@media(max-width:992px){
+
+    .about-hero .container{
+        grid-template-columns:1fr;
+        text-align:center;
+        gap:50px;
+    }
+
+    .about-buttons{
+    justify-content:center;
+}
+
+    .about-image{
+        order:-1;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .about-title{
+        font-size:42px;
+    }
+
+    .about-description{
+        font-size:16px;
+    }
+
+   .about-buttons{
+    flex-direction:column;
+    align-items:center;
+}
+
+    .about-buttons .btn{
+
+    width:100%;
+    max-width:280px;
+
+}
+
+}
+/* ==========================================
+   TRUST SECTION
+========================================== */
+
+.trust-section{
+
+    margin-top:-40px;
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+.trust-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+.trust-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.trust-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.trust-card i{
+
+    font-size:38px;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+.trust-card h2{
+
+    font-size:36px;
+
+    color:var(--dark);
+
+    margin-bottom:10px;
+
+}
+
+.trust-card p{
+
+    color:var(--gray);
+
+}
+@media(max-width:992px){
+
+.mission-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+/* ===========================
+   VALUES
+=========================== */
+
+@media(max-width:992px){
+
+    .values-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .values-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+/* ===========================
+   IMPACT
+=========================== */
+
+@media(max-width:992px){
+
+    .impact-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .impact-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+/* ===========================
+   CTA
+=========================== */
+
+@media(max-width:768px){
+
+    .cta-box{
+
+        padding:50px 25px;
+
+    }
+
+    .cta-box h2{
+
+        font-size:32px;
+
+    }
+
+    .cta-buttons{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .cta-buttons .btn{
+
+        width:100%;
+
+        max-width:280px;
+
+    }
+
+}
+/* ===========================
+   STORY
+=========================== */
+
+@media(max-width:992px){
+
+    .story-grid{
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+
+    }
+
+    .story-image{
+
+        order:-1;
+
+    }
+
+    .story-highlights{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

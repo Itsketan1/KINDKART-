@@ -1,77 +1,182 @@
 {% extends "base.html" %}
 
-{% block title %}{{ campaign.title }}{% endblock %}
+{% block title %}
+{{ campaign.title }} | KindKart
+{% endblock %}
 
 {% block css %}
-<link rel="stylesheet"
-      href="{{ url_for('static', filename='css/pages/campaign_details.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/campaign_details.css') }}">
 {% endblock %}
 
 {% block content %}
+<!-- =========================
+     PREMIUM HERO SECTION
+========================= -->
 
-<!-- HERO -->
 <section class="campaign-hero">
 
     <div class="container">
 
         <div class="hero-grid">
 
-            <!-- Left -->
+            <!-- Left Image -->
+
             <div class="hero-image">
 
                 <img src="{{ url_for('static', filename=campaign.image) }}"
                      alt="{{ campaign.title }}">
 
+                <div class="image-overlay">
+
+                    <span class="campaign-badge">
+
+                        {{ campaign.category }}
+
+                    </span>
+
+                </div>
+
             </div>
 
-            <!-- Right -->
+            <!-- Right Content -->
+
             <div class="hero-content">
 
-                <span class="category">
-                    {{ campaign.category }}
+                <span class="featured-text">
+
+                    ❤️ Featured Campaign
+
                 </span>
 
-                <h1>{{ campaign.title }}</h1>
+                <h1>
 
-                <p class="description">
+                    {{ campaign.title }}
+
+                </h1>
+
+                <p class="campaign-description">
+
                     {{ campaign.description }}
+
                 </p>
 
-                {% include "components/progress_bar.html" %}
+                <!-- Progress -->
 
-                <div class="campaign-stats">
+                <div class="progress-wrapper">
 
-                    <div class="stat">
-                        <h3>${{ campaign.raised }}</h3>
-                        <p>Raised</p>
+                    <div class="progress-header">
+
+                        <span>
+
+                            Raised ₹{{ campaign.raised }}
+
+                        </span>
+
+                        <span>
+
+                            Goal ₹{{ campaign.goal }}
+
+                        </span>
+
                     </div>
 
-                    <div class="stat">
-                        <h3>${{ campaign.goal }}</h3>
-                        <p>Goal</p>
-                    </div>
+                    <div class="progress-bar">
 
-                    <div class="stat">
-                        <h3>{{ campaign.supporters }}</h3>
-                        <p>Supporters</p>
-                    </div>
+                        <div class="progress-fill"
 
-                    <div class="stat">
-                        <h3>{{ campaign.days_left }}</h3>
-                        <p>Days Left</p>
+                             style="width:75%;">
+
+                        </div>
+
                     </div>
 
                 </div>
+
+                <!-- Stats -->
+
+                <div class="stats-grid">
+
+                    <div class="stat-box">
+
+                        <h2>
+
+                            {{ campaign.supporters }}
+
+                        </h2>
+
+                        <p>
+
+                            Supporters
+
+                        </p>
+
+                    </div>
+
+                    <div class="stat-box">
+
+                        <h2>
+
+                            {{ campaign.days_left }}
+
+                        </h2>
+
+                        <p>
+
+                            Days Left
+
+                        </p>
+
+                    </div>
+
+                    <div class="stat-box">
+
+                        <h2>
+
+                            75%
+
+                        </h2>
+
+                        <p>
+
+                            Funded
+
+                        </p>
+
+                    </div>
+
+                    <div class="stat-box">
+
+                        <h2>
+
+                            Verified
+
+                        </h2>
+
+                        <p>
+
+                            Campaign
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Buttons -->
 
                 <div class="hero-buttons">
 
                     <a href="{{ url_for('donate_campaign', campaign_id=campaign.id) }}"
                        class="btn btn-primary">
+
                         Donate Now
+
                     </a>
 
                     <button class="btn btn-outline">
-                        Share
+
+                        Share Campaign
+
                     </button>
 
                 </div>
@@ -83,25 +188,202 @@
     </div>
 
 </section>
+<!-- ======================================
+     CAMPAIGN STORY + DONATION CARD
+====================================== -->
 
-<!-- STORY -->
 <section class="story-section">
 
     <div class="container">
 
         <div class="story-grid">
 
-            <div class="story-content">
+            <!-- STORY -->
 
-                <h2>Campaign Story</h2>
+            <div class="story-card">
 
-                <p>{{ campaign.story }}</p>
+                <span class="section-tag">
+
+                    📖 Our Mission
+
+                </span>
+
+                <h2>
+
+                    Campaign Story
+
+                </h2>
+
+                <p>
+
+                    {{ campaign.story }}
+
+                </p>
+
+                <div class="story-features">
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+
+                            📚
+
+                        </div>
+
+                        <div>
+
+                            <h4>Educational Resources</h4>
+
+                            <p>
+                                Books, school bags, notebooks and
+                                digital learning kits.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+
+                            🎓
+
+                        </div>
+
+                        <div>
+
+                            <h4>Scholarship Support</h4>
+
+                            <p>
+
+                                Helping deserving students continue
+                                their education.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+
+                            ❤️
+
+                        </div>
+
+                        <div>
+
+                            <h4>Community Impact</h4>
+
+                            <p>
+
+                                Every donation creates opportunities
+                                for children in need.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <aside class="sticky-card">
+            <!-- DONATION CARD -->
 
-                {% include "components/donation_card.html" %}
+            <aside class="donation-card">
+
+                <div class="donation-header">
+
+                    <h3>
+
+                        Make A Difference
+
+                    </h3>
+
+                    <p>
+
+                        Every contribution helps us reach more students.
+
+                    </p>
+
+                </div>
+
+                <div class="donation-options">
+
+                    <button class="amount-btn">
+
+                        ₹500
+
+                    </button>
+
+                    <button class="amount-btn">
+
+                        ₹1000
+
+                    </button>
+
+                    <button class="amount-btn">
+
+                        ₹2500
+
+                    </button>
+
+                    <button class="amount-btn">
+
+                        ₹5000
+
+                    </button>
+
+                </div>
+
+                <input
+
+                    type="number"
+
+                    placeholder="Enter Custom Amount"
+
+                    class="custom-amount"
+
+                >
+
+                <a
+
+                    href="{{ url_for('donate_campaign', campaign_id=campaign.id) }}"
+
+                    class="donate-btn"
+
+                >
+
+                    ❤️ Donate Securely
+
+                </a>
+
+                <div class="donation-info">
+
+                    <div>
+
+                        🔒 Secure Payment
+
+                    </div>
+
+                    <div>
+
+                        📜 Tax Benefits Available
+
+                    </div>
+
+                    <div>
+
+                        ⚡ Instant Confirmation
+
+                    </div>
+
+                </div>
 
             </aside>
 
@@ -110,70 +392,700 @@
     </div>
 
 </section>
+<!-- ======================================
+     ORGANIZER SECTION
+====================================== -->
 
-<!-- ORGANIZER -->
 <section class="organizer-section">
 
     <div class="container">
 
-        <h2>Organizer</h2>
+        <div class="section-heading">
 
-        {% include "components/organizer_card.html" %}
+            <span class="section-tag">
+
+                👥 Organizer
+
+            </span>
+
+            <h2>
+
+                Meet The Organization
+
+            </h2>
+
+        </div>
+
+        <div class="organizer-card">
+
+            <!-- Left -->
+
+            <div class="organizer-left">
+
+                <img
+                    src="{{ url_for('static', filename='images/organizer.jpg') }}"
+                    alt="Organizer"
+                    class="organizer-avatar"
+                >
+
+            </div>
+
+            <!-- Right -->
+
+            <div class="organizer-right">
+
+                <div class="organizer-top">
+
+                    <h3>
+
+                        Smile Foundation
+
+                    </h3>
+
+                    <span class="verified-badge">
+
+                        ✔ Verified NGO
+
+                    </span>
+
+                </div>
+
+                <p class="organizer-description">
+
+                    Smile Foundation has been working across India
+                    since 2002 to improve education, healthcare and
+                    livelihood opportunities for underprivileged
+                    communities.
+
+                </p>
+
+                <div class="organizer-stats">
+
+                    <div class="org-stat">
+
+                        <h3>
+
+                            120+
+
+                        </h3>
+
+                        <span>
+
+                            Campaigns
+
+                        </span>
+
+                    </div>
+
+                    <div class="org-stat">
+
+                        <h3>
+
+                            12K+
+
+                        </h3>
+
+                        <span>
+
+                            Donors
+
+                        </span>
+
+                    </div>
+
+                    <div class="org-stat">
+
+                        <h3>
+
+                            ₹2.5Cr+
+
+                        </h3>
+
+                        <span>
+
+                            Raised
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="organizer-actions">
+
+                    <button class="btn btn-primary">
+
+                        View Profile
+
+                    </button>
+
+                    <button class="btn btn-outline">
+
+                        Contact NGO
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
+<!-- ======================================
+     CAMPAIGN UPDATES
+====================================== -->
 
-<!-- TIMELINE -->
 <section class="timeline-section">
 
     <div class="container">
 
-        <h2>Campaign Updates</h2>
+        <div class="section-heading">
 
-        {% include "components/update_timeline.html" %}
+            <span class="section-tag">
+
+                📅 Campaign Journey
+
+            </span>
+
+            <h2>
+
+                Latest Updates
+
+            </h2>
+
+            <p>
+
+                Stay updated with every milestone achieved during this campaign.
+
+            </p>
+
+        </div>
+
+        <div class="timeline">
+
+            <!-- ITEM -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-icon">
+
+                    🚀
+
+                </div>
+
+                <div class="timeline-card">
+
+                    <span class="timeline-date">
+
+                        30 July 2026
+
+                    </span>
+
+                    <h3>
+
+                        Campaign Successfully Launched
+
+                    </h3>
+
+                    <p>
+
+                        We officially launched this campaign to provide
+                        educational support for children in rural schools.
+                        Hundreds of people joined within the first day.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ITEM -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-icon">
+
+                    ❤️
+
+                </div>
+
+                <div class="timeline-card">
+
+                    <span class="timeline-date">
+
+                        02 August 2026
+
+                    </span>
+
+                    <h3>
+
+                        500 Supporters Joined
+
+                    </h3>
+
+                    <p>
+
+                        Thanks to the amazing community, we crossed
+                        our first 500 supporters and reached nearly
+                        half of our fundraising goal.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ITEM -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-icon">
+
+                    📚
+
+                </div>
+
+                <div class="timeline-card">
+
+                    <span class="timeline-date">
+
+                        10 August 2026
+
+                    </span>
+
+                    <h3>
+
+                        First Batch Distributed
+
+                    </h3>
+
+                    <p>
+
+                        School kits including books, notebooks,
+                        bags and stationery were distributed to
+                        over 120 students.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ITEM -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-icon">
+
+                    🎯
+
+                </div>
+
+                <div class="timeline-card">
+
+                    <span class="timeline-date">
+
+                        15 August 2026
+
+                    </span>
+
+                    <h3>
+
+                        75% Funding Achieved
+
+                    </h3>
+
+                    <p>
+
+                        The campaign reached 75% of its fundraising
+                        target, bringing us one step closer to helping
+                        every child in need.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
+<!-- ======================================
+     CAMPAIGN GALLERY
+====================================== -->
 
-<!-- GALLERY -->
 <section class="gallery-section">
 
     <div class="container">
 
-        <h2>Gallery</h2>
+        <div class="section-heading">
 
-        {% include "components/gallery.html" %}
+            <span class="section-tag">
+
+                📸 Photo Gallery
+
+            </span>
+
+            <h2>
+
+                Moments That Matter
+
+            </h2>
+
+            <p>
+
+                Every contribution helps create smiles, opportunities,
+                and a brighter future for children.
+
+            </p>
+
+        </div>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+
+                <img src="{{ url_for('static', filename='images/campaigns/gallery1.jpg') }}"
+                     alt="Gallery Image">
+
+                <div class="gallery-overlay">
+
+                    <h4>
+
+                        School Kit Distribution
+
+                    </h4>
+
+                </div>
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img src="{{ url_for('static', filename='images/campaigns/gallery2.jpg') }}"
+                     alt="Gallery Image">
+
+                <div class="gallery-overlay">
+
+                    <h4>
+
+                        Happy Students
+
+                    </h4>
+
+                </div>
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img src="{{ url_for('static', filename='images/campaigns/gallery3.jpg') }}"
+                     alt="Gallery Image">
+
+                <div class="gallery-overlay">
+
+                    <h4>
+
+                        Community Volunteers
+
+                    </h4>
+
+                </div>
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img src="{{ url_for('static', filename='images/campaigns/gallery4.jpg') }}"
+                     alt="Gallery Image">
+
+                <div class="gallery-overlay">
+
+                    <h4>
+
+                        Educational Support
+
+                    </h4>
+
+                </div>
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img src="{{ url_for('static', filename='images/campaigns/gallery5.jpg') }}"
+                     alt="Gallery Image">
+
+                <div class="gallery-overlay">
+
+                    <h4>
+
+                        Books & Stationery
+
+                    </h4>
+
+                </div>
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img src="{{ url_for('static', filename='images/campaigns/gallery6.jpg') }}"
+                     alt="Gallery Image">
+
+                <div class="gallery-overlay">
+
+                    <h4>
+
+                        Together We Can
+
+                    </h4>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
 
-<!-- DONORS -->
-<section class="donor-section">
+<!-- ======================================
+     RELATED CAMPAIGNS
+====================================== -->
 
-    <div class="container">
-
-        <h2>Recent Supporters</h2>
-
-        {% include "components/donor_card.html" %}
-
-    </div>
-
-</section>
-
-<!-- RELATED -->
 <section class="related-section">
 
     <div class="container">
 
-        <h2>Related Campaigns</h2>
+        <div class="section-heading">
 
-        {% include "components/related_campaigns.html" %}
+            <span class="section-tag">
+                🌍 Explore More
+            </span>
+
+            <h2>
+                Related Campaigns
+            </h2>
+
+            <p>
+                Continue making an impact by supporting similar initiatives.
+            </p>
+
+        </div>
+
+        <div class="related-grid">
+
+            <!-- CARD 1 -->
+
+            <div class="related-card">
+
+                <div class="related-image">
+
+                    <img src="{{ url_for('static', filename='images/campaigns/food.jpg') }}"
+                         alt="Food Drive">
+
+                    <span class="related-category">
+
+                        Food
+
+                    </span>
+
+                </div>
+
+                <div class="related-content">
+
+                    <h3>
+
+                        Food For Every Family
+
+                    </h3>
+
+                    <p>
+
+                        Help provide nutritious meals to families
+                        struggling with food insecurity.
+
+                    </p>
+
+                    <div class="mini-progress">
+
+                        <div class="mini-fill"
+                             style="width:68%;">
+                        </div>
+
+                    </div>
+
+                    <div class="mini-info">
+
+                        <span>
+
+                            ₹34,000 Raised
+
+                        </span>
+
+                        <span>
+
+                            ₹50,000 Goal
+
+                        </span>
+
+                    </div>
+
+                    <a href="/campaign/2"
+                       class="btn btn-primary">
+
+                        View Campaign
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 2 -->
+
+            <div class="related-card">
+
+                <div class="related-image">
+
+                    <img src="{{ url_for('static', filename='images/campaigns/trees.jpg') }}"
+                         alt="Tree Plantation">
+
+                    <span class="related-category">
+
+                        Environment
+
+                    </span>
+
+                </div>
+
+                <div class="related-content">
+
+                    <h3>
+
+                        Plant A Greener Tomorrow
+
+                    </h3>
+
+                    <p>
+
+                        Join our mission to plant thousands
+                        of trees and protect nature.
+
+                    </p>
+
+                    <div class="mini-progress">
+
+                        <div class="mini-fill"
+                             style="width:82%;">
+                        </div>
+
+                    </div>
+
+                    <div class="mini-info">
+
+                        <span>
+
+                            ₹82,000 Raised
+
+                        </span>
+
+                        <span>
+
+                            ₹1,00,000 Goal
+
+                        </span>
+
+                    </div>
+
+                    <a href="/campaign/3"
+                       class="btn btn-primary">
+
+                        View Campaign
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 3 -->
+
+            <div class="related-card">
+
+                <div class="related-image">
+
+                    <img src="{{ url_for('static', filename='images/campaigns/education.jpg') }}"
+                         alt="Education">
+
+                    <span class="related-category">
+
+                        Education
+
+                    </span>
+
+                </div>
+
+                <div class="related-content">
+
+                    <h3>
+
+                        Bright Futures for All
+
+                    </h3>
+
+                    <p>
+
+                        Empower children with books,
+                        digital learning and quality education.
+
+                    </p>
+
+                    <div class="mini-progress">
+
+                        <div class="mini-fill"
+                             style="width:75%;">
+                        </div>
+
+                    </div>
+
+                    <div class="mini-info">
+
+                        <span>
+
+                            ₹45,000 Raised
+
+                        </span>
+
+                        <span>
+
+                            ₹60,000 Goal
+
+                        </span>
+
+                    </div>
+
+                    <a href="/campaign/1"
+                       class="btn btn-primary">
+
+                        View Campaign
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 </section>
-
 {% endblock %}

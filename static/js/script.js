@@ -322,3 +322,79 @@ scrollButton.addEventListener("click", () => {
     });
 
 });
+
+/* ==========================================
+   KINDKART PREMIUM NAVBAR
+========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const navbar = document.querySelector(".navbar");
+    const menuBtn = document.getElementById("menuBtn");
+    const navMenu = document.querySelector(".nav-menu");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    // =============================
+    // Navbar Scroll Effect
+    // =============================
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 40) {
+
+            navbar.classList.add("scrolled");
+
+        } else {
+
+            navbar.classList.remove("scrolled");
+
+        }
+
+    });
+
+    // =============================
+    // Mobile Menu Toggle
+    // =============================
+
+    menuBtn.addEventListener("click", () => {
+
+        navMenu.classList.toggle("active");
+        menuBtn.classList.toggle("active");
+
+        const icon = menuBtn.querySelector("i");
+
+        if (navMenu.classList.contains("active")) {
+
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-xmark");
+
+        } else {
+
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+
+        }
+
+    });
+
+    // =============================
+    // Close Mobile Menu
+    // =============================
+
+    navLinks.forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navMenu.classList.remove("active");
+            menuBtn.classList.remove("active");
+
+            const icon = menuBtn.querySelector("i");
+
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+
+        });
+
+    });
+
+});

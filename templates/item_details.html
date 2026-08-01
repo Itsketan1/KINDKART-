@@ -43,7 +43,7 @@
     ₹ {{ item['price'] }}
 </div>
 
-            <div class="info-grid">
+           <div class="info-grid">
 
     <div>
         <span>Condition</span>
@@ -51,8 +51,28 @@
     </div>
 
     <div>
+        <span>Category</span>
+        <strong>{{ item['category'] }}</strong>
+    </div>
+
+    <div>
         <span>Seller</span>
         <strong>{{ item['full_name'] }}</strong>
+    </div>
+
+    <div>
+        <span>Availability</span>
+        <strong>Available</strong>
+    </div>
+
+    <div>
+        <span>Location</span>
+        <strong>Pune, Maharashtra</strong>
+    </div>
+
+    <div>
+        <span>Posted</span>
+        <strong>2 Days Ago</strong>
     </div>
 
 </div>
@@ -65,13 +85,79 @@
 
 </div>
 
-           <a href="mailto:{{ item['email'] }}" class="btn btn-primary">
+<div class="seller-card">
 
-    <i class="fas fa-envelope"></i>
+    <div class="seller-top">
 
-    Contact Seller
+        <img src="{{ url_for('static', filename='images/organizer.jpg') }}"
+             alt="Seller">
 
-</a>
+        <div>
+
+            <h3>{{ item['full_name'] }}</h3>
+
+            <span>Verified Student Seller</span>
+
+        </div>
+
+    </div>
+
+    <div class="seller-stats">
+
+        <div>
+
+            <strong>4.9 ★</strong>
+
+            <span>Rating</span>
+
+        </div>
+
+        <div>
+
+            <strong>27</strong>
+
+            <span>Listings</span>
+
+        </div>
+
+        <div>
+
+            <strong>1 hr</strong>
+
+            <span>Response</span>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="product-actions">
+
+    <a href="mailto:{{ item['email'] }}" class="btn btn-primary">
+
+        <i class="fas fa-envelope"></i>
+
+        Contact Seller
+
+    </a>
+
+    <button class="btn btn-outline">
+
+        <i class="far fa-heart"></i>
+
+        Save
+
+    </button>
+
+    <button class="btn btn-outline">
+
+        <i class="fas fa-share-alt"></i>
+
+        Share
+
+    </button>
+
+</div>
 
         </div>
 
@@ -79,4 +165,167 @@
 
 </section>
 
+<!-- =========================================
+     RELATED ITEMS
+========================================= -->
+
+<section class="related-items">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+
+                🛍 Similar Listings
+
+            </span>
+
+            <h2>
+
+                You May Also Like
+
+            </h2>
+
+            <p>
+
+                Explore more affordable student essentials from our marketplace.
+
+            </p>
+
+        </div>
+
+        <div class="related-grid">
+
+            <!-- Card 1 -->
+
+            <div class="related-product">
+
+                <img src="{{ url_for('static', filename='images/campaigns/education.jpg') }}">
+
+                <div class="related-content">
+
+                    <span class="category">
+
+                        Books
+
+                    </span>
+
+                    <h3>
+
+                        Engineering Mathematics
+
+                    </h3>
+
+                    <p>
+
+                        Excellent condition.
+
+                    </p>
+
+                    <h4>
+
+                        ₹250
+
+                    </h4>
+
+                    <a href="#" class="btn btn-primary">
+
+                        View Details
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Card 2 -->
+
+            <div class="related-product">
+
+                <img src="{{ url_for('static', filename='images/campaigns/food.jpg') }}">
+
+                <div class="related-content">
+
+                    <span class="category">
+
+                        Electronics
+
+                    </span>
+
+                    <h3>
+
+                        Scientific Calculator
+
+                    </h3>
+
+                    <p>
+
+                        Like new.
+
+                    </p>
+
+                    <h4>
+
+                        ₹650
+
+                    </h4>
+
+                    <a href="#" class="btn btn-primary">
+
+                        View Details
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Card 3 -->
+
+            <div class="related-product">
+
+                <img src="{{ url_for('static', filename='images/campaigns/trees.jpg') }}">
+
+                <div class="related-content">
+
+                    <span class="category">
+
+                        Furniture
+
+                    </span>
+
+                    <h3>
+
+                        Study Chair
+
+                    </h3>
+
+                    <p>
+
+                        Comfortable and sturdy.
+
+                    </p>
+
+                    <h4>
+
+                        ₹1200
+
+                    </h4>
+
+                    <a href="#" class="btn btn-primary">
+
+                        View Details
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 {% endblock %}

@@ -1,0 +1,479 @@
+{% extends "base.html" %}
+
+{% block title %}About Us | KindKart{% endblock %}
+
+{% block content %}
+
+{% block css %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/about.css') }}">
+
+{% endblock %}
+<!-- ================= HERO ================= -->
+<section class="about-hero">
+
+    <div class="container">
+
+        <!-- Left -->
+
+        <div class="about-content">
+
+            <span class="badge">
+                🌱 Empowering Communities
+            </span>
+
+            <h1 class="about-title">
+                Building a Better Future Through
+                <span>Technology & Kindness</span>
+            </h1>
+
+            <p class="about-description">
+
+                KindKart connects generous donors, NGOs,
+                volunteers, and communities through one
+                modern digital platform. Together, we make
+                helping people simple, transparent,
+                and impactful.
+
+            </p>
+
+            <div class="about-buttons">
+
+                <a href="{{ url_for('campaigns') }}"
+                   class="btn btn-primary">
+
+                    Explore Campaigns
+
+                </a>
+
+                <a href="{{ url_for('contact') }}"
+                   class="btn btn-secondary">
+
+                    Contact Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Right -->
+
+        <div class="about-image">
+
+            <img src="{{ url_for('static', filename='images/about-hero.png') }}"
+                 alt="KindKart">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     TRUST INDICATORS
+========================================== -->
+
+<section class="trust-section">
+
+    <div class="container">
+
+        <div class="trust-grid">
+
+            <div class="trust-card">
+
+                <i class="fas fa-hand-holding-heart"></i>
+
+                <h2>500+</h2>
+
+                <p>Successful Donations</p>
+
+            </div>
+
+            <div class="trust-card">
+
+                <i class="fas fa-building"></i>
+
+                <h2>50+</h2>
+
+                <p>NGO Partners</p>
+
+            </div>
+
+            <div class="trust-card">
+
+                <i class="fas fa-bullseye"></i>
+
+                <h2>10+</h2>
+
+                <p>Active Campaigns</p>
+
+            </div>
+
+            <div class="trust-card">
+
+                <i class="fas fa-users"></i>
+
+                <h2>1000+</h2>
+
+                <p>Lives Impacted</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STORY ================= -->
+
+<section class="about-story">
+
+    <div class="container story-grid">
+
+        <!-- Left Image -->
+
+        <div class="story-image">
+
+            <img src="{{ url_for('static',
+            filename='images/story.png') }}"
+            alt="Students volunteering through KindKart">
+
+        </div>
+
+        <!-- Right Content -->
+
+        <div class="story-content">
+
+            <span class="badge">
+                Our Story
+            </span>
+
+            <h2>
+                Connecting Students,
+                Communities & NGOs
+            </h2>
+
+            <p>
+                KindKart was created with one simple mission—
+                making it easier for people to donate, volunteer,
+                and support meaningful causes through one trusted
+                digital platform.
+            </p>
+
+            <p>
+                We connect students, donors, NGOs, and volunteers
+                to create a transparent ecosystem where generosity
+                reaches the people who need it most.
+            </p>
+
+            <div class="story-highlights">
+
+                <div>
+                    <i class="fas fa-check-circle"></i>
+                    Trusted NGO Network
+                </div>
+
+                <div>
+                    <i class="fas fa-check-circle"></i>
+                    Secure Donations
+                </div>
+
+                <div>
+                    <i class="fas fa-check-circle"></i>
+                    Student Marketplace
+                </div>
+
+                <div>
+                    <i class="fas fa-check-circle"></i>
+                    Community Driven
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= MISSION & VISION ================= -->
+<!-- ================= MISSION & VISION ================= -->
+
+<section class="mission-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="badge">
+                What Drives Us
+            </span>
+
+            <h2>
+                Mission & Vision
+            </h2>
+
+            <p>
+                Our purpose is to create meaningful impact by connecting
+                people, technology, and trusted organizations.
+            </p>
+
+        </div>
+
+        <div class="mission-grid">
+
+            <div class="info-card">
+
+                <div class="card-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+
+                <h3>Our Mission</h3>
+
+                <p>
+                    To make donating, volunteering, and supporting
+                    communities simple, transparent, and accessible
+                    through technology.
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <div class="card-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+
+                <h3>Our Vision</h3>
+
+                <p>
+                    A future where every act of kindness reaches the
+                    right people quickly, securely, and with complete
+                    transparency.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= VALUES ================= -->
+<!-- ================= VALUES ================= -->
+
+<section class="values">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="badge">
+                Our Principles
+            </span>
+
+            <h2>
+                Our Core Values
+            </h2>
+
+            <p>
+                Everything we build at KindKart is guided by these
+                principles to create trust, transparency, and impact.
+            </p>
+
+        </div>
+
+        <div class="values-grid">
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+
+                <h3>Compassion</h3>
+
+                <p>
+                    We believe every act of kindness has the power to
+                    transform lives and strengthen communities.
+                </p>
+
+            </div>
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+
+                <h3>Transparency</h3>
+
+                <p>
+                    Every donation is tracked and every campaign is
+                    presented with honesty and accountability.
+                </p>
+
+            </div>
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+
+                <h3>Community</h3>
+
+                <p>
+                    Together, donors, volunteers, and NGOs create
+                    meaningful and lasting social impact.
+                </p>
+
+            </div>
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+
+                <h3>Sustainability</h3>
+
+                <p>
+                    We encourage long-term solutions that empower
+                    people and create self-sustaining communities.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= IMPACT ================= -->
+
+<section class="impact">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="badge">
+                Our Achievements
+            </span>
+
+            <h2>
+                Creating Meaningful Impact
+            </h2>
+
+            <p>
+                Every donation, campaign, and volunteer contributes to
+                building stronger communities.
+            </p>
+
+        </div>
+
+        <div class="impact-grid">
+
+            <div class="impact-card">
+
+                <div class="impact-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+
+                <h3>15,000+</h3>
+
+                <p>Lives Supported</p>
+
+            </div>
+
+            <div class="impact-card">
+
+                <div class="impact-icon">
+                    <i class="fas fa-hand-holding-dollar"></i>
+                </div>
+
+                <h3>₹50L+</h3>
+
+                <p>Funds Raised</p>
+
+            </div>
+
+            <div class="impact-card">
+
+                <div class="impact-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+
+                <h3>250+</h3>
+
+                <p>Successful Campaigns</p>
+
+            </div>
+
+            <div class="impact-card">
+
+                <div class="impact-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+
+                <h3>120+</h3>
+
+                <p>Verified NGO Partners</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CTA ================= -->
+<!-- ================= CTA ================= -->
+
+<section class="about-cta">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <span class="badge">
+                Join Our Community
+            </span>
+
+            <h2>
+                Every Contribution Creates Hope
+            </h2>
+
+            <p>
+                Whether you donate, volunteer, or support a campaign,
+                every small action brings meaningful change to someone's
+                life. Become part of the KindKart community today.
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="{{ url_for('campaigns') }}"
+                   class="btn btn-primary">
+                    Explore Campaigns
+                </a>
+
+                <a href="{{ url_for('contact') }}"
+                   class="btn btn-secondary">
+                    Contact Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

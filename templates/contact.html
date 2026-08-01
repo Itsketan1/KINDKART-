@@ -1,0 +1,412 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact - KindKart
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/contact.css') }}">
+{% endblock %}
+
+{% block content %}
+
+
+
+<!-- ==========================================
+            CONTACT HERO
+========================================== -->
+
+<section class="contact-hero">
+
+    <div class="container contact-grid">
+
+        <!-- Left -->
+
+        <div class="contact-content">
+
+            <span class="badge">
+
+                📞 Get In Touch
+
+            </span>
+
+            <h1>
+
+                We'd Love To
+                <span>Hear From You</span>
+
+            </h1>
+
+            <p>
+
+                Whether you have questions, ideas,
+                partnership opportunities, or simply
+                want to say hello, our team is always
+                here to help.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#contact-form"
+                   class="btn btn-primary">
+
+                    Send Message
+
+                </a>
+
+                <a href="{{ url_for('campaigns') }}"
+                   class="btn btn-secondary">
+
+                    Explore Campaigns
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Right -->
+
+        <div class="contact-image">
+
+            <img src="{{ url_for('static',
+            filename='images/contact-hero.svg') }}"
+
+            alt="Contact KindKart">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+            CONTACT INFO
+========================================== -->
+
+<section class="contact-info">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="badge">Contact Information</span>
+
+            <h2>Reach Us Anytime</h2>
+
+            <p>
+                Whether you're looking to donate, partner with us,
+                or simply ask a question, we're here to help.
+            </p>
+
+        </div>
+
+        <div class="contact-cards">
+
+            <!-- Phone -->
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+
+                <h3>Phone</h3>
+
+                <p>+91 98765 43210</p>
+
+                <span>Mon - Fri | 9:00 AM - 6:00 PM</span>
+
+            </div>
+
+            <!-- Email -->
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+
+                <h3>Email</h3>
+
+                <p>support@kindkart.org</p>
+
+                <span>We'll respond within 24 hours</span>
+
+            </div>
+
+            <!-- Address -->
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <h3>Address</h3>
+
+                <p>Nagpur, Maharashtra</p>
+
+                <span>India</span>
+
+            </div>
+
+            <!-- Working Hours -->
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+
+                <h3>Working Hours</h3>
+
+                <p>Monday - Friday</p>
+
+                <span>9:00 AM - 6:00 PM</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+            CONTACT FORM
+========================================== -->
+
+<section class="contact-section" id="contact-form">
+
+    <div class="container">
+
+        <div class="contact-wrapper">
+
+            <!-- Contact Form -->
+
+            <div class="contact-form-card">
+
+                <span class="badge">
+                    Send a Message
+                </span>
+
+                <h2>Let's Start a Conversation</h2>
+
+                <p>
+                    We'd love to hear your ideas, answer your questions,
+                    or discuss partnership opportunities.
+                </p>
+
+                <form>
+
+                    <div class="form-group">
+
+                        <input
+                            type="text"
+                            placeholder="Your Name"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <input
+                            type="text"
+                            placeholder="Subject">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <textarea
+                            rows="6"
+                            placeholder="Write your message..."
+                            required></textarea>
+
+                    </div>
+
+                    <button class="btn btn-primary">
+
+                        Send Message
+
+                    </button>
+
+                </form>
+
+
+                <!-- ==========================================
+                FAQ SECTION
+========================================== -->
+
+<section class="faq-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="badge">FAQs</span>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <p>
+                Everything you need to know about KindKart.
+            </p>
+
+        </div>
+
+        <div class="faq-container">
+
+            <details class="faq-item">
+
+                <summary>
+                    How do I donate?
+                </summary>
+
+                <p>
+                    Browse our active campaigns and donate securely through our trusted payment gateway.
+                </p>
+
+            </details>
+
+            <details class="faq-item">
+
+                <summary>
+                    How can NGOs join KindKart?
+                </summary>
+
+                <p>
+                    NGOs can register, submit verification documents, and begin creating campaigns once approved.
+                </p>
+
+            </details>
+
+            <details class="faq-item">
+
+                <summary>
+                    Is the marketplace secure?
+                </summary>
+
+                <p>
+                    Yes. Every listing is moderated and users can report suspicious activity to our team.
+                </p>
+
+            </details>
+
+            <details class="faq-item">
+
+                <summary>
+                    Can students volunteer?
+                </summary>
+
+                <p>
+                    Absolutely! Students can participate in campaigns, volunteering events, and community drives.
+                </p>
+
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+            </div>
+
+            <!-- Google Map -->
+
+            <div class="map-card">
+
+                <span class="badge">
+
+                    Find Us
+
+                </span>
+
+                <h2>Visit Our Office</h2>
+
+                <p>
+
+                    Pune, Maharashtra, India
+
+                </p>
+
+                <iframe
+                    src="https://www.google.com/maps?q=Pune,Maharashtra&output=embed"
+                    loading="lazy"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+            CONTACT CTA
+========================================== -->
+
+<section class="contact-cta">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <span class="badge">
+
+                Join Our Community
+
+            </span>
+
+            <h2>
+
+                Ready to Make
+                <span>a Difference?</span>
+
+            </h2>
+
+            <p>
+
+                Whether you want to donate, volunteer,
+                or partner with NGOs, KindKart makes
+                creating social impact simple and secure.
+
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="{{ url_for('campaigns') }}"
+                   class="btn btn-primary">
+
+                    Explore Campaigns
+
+                </a>
+
+                <a href="{{ url_for('contact') }}"
+                   class="btn btn-outline">
+
+                    Contact Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

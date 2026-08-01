@@ -91,36 +91,53 @@ def about():
 def campaigns():
 
     campaigns = [
+
         {
             "id": 1,
             "title": "School Supplies For Rural Students",
-            "description": "Provide books, uniforms and stationery to children.",
             "category": "Education",
-            "image": "images/campaigns/campaign1.jpg",
+            "description": "Help provide school bags, notebooks, uniforms and essential learning materials.",
             "goal": 50000,
             "raised": 36000,
-            "days_left": 14
+            "supporters": 820,
+            "days_left": 14,
+            "image": "images/campaigns/campaign1.jpg"
         },
+
         {
             "id": 2,
-            "title": "Community Food Drive",
-            "description": "Provide meals to families facing hardship.",
+            "title": "Food Donation Drive",
             "category": "Food",
-            "image": "images/campaigns/campaign2.jpg",
-            "goal": 30000,
-            "raised": 27000,
-            "days_left": 6
-        }
-    ]
+            "description": "Support families by contributing essential food supplies.",
+            "goal": 50000,
+            "raised": 34000,
+            "supporters": 620,
+            "days_left": 18,
+            "image": "images/campaigns/campaign2.jpg"
+        },
 
-    featured = campaigns[0]
+        {
+            "id": 3,
+            "title": "Student Essentials",
+            "category": "Essentials",
+            "description": "Donate furniture, laptops, books and stationery.",
+            "goal": 50000,
+            "raised": 30000,
+            "supporters": 500,
+            "days_left": 20,
+            "image": "images/campaigns/campaign3.jpg"
+        }
+
+    ]
 
     stats = {
         "campaigns": len(campaigns),
-        "raised": "$245K",
-        "supporters": "820+",
-        "success": "96%"
+        "raised": sum(c["raised"] for c in campaigns),
+        "supporters": sum(c["supporters"] for c in campaigns),
+        "success": "100%"
     }
+
+    featured = campaigns[0]
 
     return render_template(
         "campaigns.html",
@@ -128,66 +145,130 @@ def campaigns():
         featured=featured,
         stats=stats
     )
-
 @app.route("/campaign/<int:campaign_id>")
 def campaign_details(campaign_id):
 
-    campaign = {
-    "id": campaign_id,
-    "title": "School Supplies For Rural Students",
-    "category": "Education",
-    "description": "Help provide school bags, notebooks, uniforms and essential learning materials for children studying in rural communities.",
-    "story": """
-Every child deserves access to quality education.
+    campaigns = {
 
-This campaign aims to provide educational resources to students living in rural villages where families struggle to afford basic school supplies.
+        1: {
+            "id": 1,
+            "title": "School Supplies For Rural Students",
+            "category": "Education",
+            "description": "Help provide school bags, notebooks, uniforms and essential learning materials.",
+            "story": "Every child deserves access to quality education. This campaign provides books, notebooks, school bags and learning materials to students in rural areas.",
+            "goal": 50000,
+            "raised": 36000,
+            "supporters": 820,
+            "days_left": 14,
+            "image": "images/campaigns/campaign1.jpg"
+        },
 
-With community support we can ensure hundreds of children continue learning with confidence.
-""",
-    "goal": 50000,
-    "raised": 36000,
-    "supporters": 820,
-    "days_left": 14,
-    "image": "images/campaigns/campaign1.jpg"
-}
+        2: {
+            "id": 2,
+            "title": "Food Donation Drive",
+            "category": "Food",
+            "description": "Support families by contributing essential food supplies.",
+            "story": "Providing nutritious food kits to underprivileged families.",
+            "goal": 50000,
+            "raised": 34000,
+            "supporters": 620,
+            "days_left": 18,
+            "image": "images/campaigns/campaign2.jpg"
+        },
+
+        3: {
+            "id": 3,
+            "title": "Student Essentials",
+            "category": "Essentials",
+            "description": "Donate furniture, laptops, books and stationery.",
+            "story": "Helping students get access to the essential items they need for education.",
+            "goal": 50000,
+            "raised": 30000,
+            "supporters": 500,
+            "days_left": 20,
+            "image": "images/campaigns/campaign3.jpg"
+        }
+
+    }
+
+    campaign = campaigns.get(campaign_id)
+
+    if campaign is None:
+        return render_template("404.html"), 404
+
     return render_template(
         "campaign_details.html",
         campaign=campaign
     )
 
-
 @app.route("/donate/<int:campaign_id>", methods=["GET", "POST"])
 def donate_campaign(campaign_id):
+    db = get_db()
 
-    campaign = {
-        "id": campaign_id,
-        "title": "School Supplies For Rural Students",
-        "category": "Education",
-        "description": "Providing school supplies for rural students.",
-        "goal": 50000,
-        "raised": 36000,
-        "supporters": 820,
-        "days_left": 14,
-        "image": "images/campaigns/campaign1.jpg"
-    }
+    campaign = db.execute(
+        """
+        SELECT *
+        FROM campaigns
+        WHERE id = ?
+        """,
+        (campaign_id,)
+    ).fetchone()
+
+    if campaign is None:
+        db.close()
+        return render_template("404.html"), 404
 
     if request.method == "POST":
+        amount = float(request.form["amount"])
 
-        donor_name = request.form.get("name")
-        email = request.form.get("email")
-        phone = request.form.get("phone")
-        amount = request.form.get("amount")
-        payment = request.form.get("payment")
+        # Save donation
+        db.execute(
+            """
+            INSERT INTO donations
+            (
+                user_id,
+                campaign_id,
+                amount
+            )
+            VALUES (?,?,?)
+            """,
+            (
+                session.get("user_id"),
+                campaign_id,
+                amount
+            )
+        )
 
-        print("Donation Received")
-        print(donor_name, email, phone, amount, payment)
+        # Update campaign total
+        db.execute(
+            """
+            UPDATE campaigns
+            SET raised = raised + ?
+            WHERE id = ?
+            """,
+            (
+                amount,
+                campaign_id
+            )
+        )
 
-        return redirect(url_for(
-            "thank_you",
-            campaign_id=campaign_id,
-            amount=amount
-        ))
+        db.commit()
+        db.close()
 
+        flash(
+            "Thank you for your donation!",
+            "success"
+        )
+
+        return redirect(
+            url_for(
+                "thank_you",
+                campaign_id=campaign_id,
+                amount=amount
+            )
+        )
+
+    db.close()
     return render_template(
         "donate.html",
         campaign=campaign
@@ -357,6 +438,151 @@ def sell_item():
 
     return render_template("sell_item.html")
 
+
+# =====================================================
+# EDIT ITEM
+# =====================================================
+
+@app.route("/edit-item/<int:item_id>", methods=["GET", "POST"])
+def edit_item(item_id):
+
+    if "user_id" not in session:
+        flash("Please login first.", "warning")
+        return redirect(url_for("login"))
+
+    db = get_db()
+
+    item = db.execute(
+        """
+        SELECT *
+        FROM marketplace_items
+        WHERE id = ?
+        """,
+        (item_id,)
+    ).fetchone()
+
+    if item is None:
+        db.close()
+        return render_template("404.html"), 404
+
+    # Authorization
+    if item["seller_id"] != session["user_id"]:
+        db.close()
+        flash("You are not authorized to edit this item.", "error")
+        return redirect(url_for("my_listings"))
+
+    if request.method == "POST":
+
+        title = request.form["title"]
+        description = request.form["description"]
+        category = request.form["category"]
+        condition = request.form["condition"]
+        price = request.form["price"]
+
+        image_name = item["image"]
+
+        image = request.files.get("image")
+
+        if image and image.filename != "":
+            if allowed_file(image.filename):
+
+                filename = secure_filename(image.filename)
+
+                image.save(
+                    os.path.join(
+                        app.config["UPLOAD_FOLDER"],
+                        filename
+                    )
+                )
+
+                image_name = filename
+
+        db.execute(
+            """
+            UPDATE marketplace_items
+
+            SET
+                title=?,
+                description=?,
+                category=?,
+                condition=?,
+                price=?,
+                image=?
+
+            WHERE id=?
+            """,
+            (
+                title,
+                description,
+                category,
+                condition,
+                price,
+                image_name,
+                item_id
+            )
+        )
+
+        db.commit()
+        db.close()
+
+        flash("Item updated successfully!", "success")
+
+        return redirect(url_for("my_listings"))
+
+    db.close()
+
+    return render_template(
+        "edit_item.html",
+        item=item
+    )
+    
+    # =====================================================
+# DELETE ITEM
+# =====================================================
+
+@app.route("/delete-item/<int:item_id>", methods=["POST"])
+def delete_item(item_id):
+
+    if "user_id" not in session:
+        flash("Please login first.", "warning")
+        return redirect(url_for("login"))
+
+    db = get_db()
+
+    item = db.execute(
+        """
+        SELECT *
+        FROM marketplace_items
+        WHERE id = ?
+        """,
+        (item_id,)
+    ).fetchone()
+
+    if item is None:
+        db.close()
+        return render_template("404.html"), 404
+
+    # Authorization - only owner can delete
+    if item["seller_id"] != session["user_id"]:
+        db.close()
+        flash("You are not authorized to delete this item.", "error")
+        return redirect(url_for("my_listings"))
+
+    # Delete the record
+    db.execute(
+        """
+        DELETE FROM marketplace_items
+        WHERE id = ?
+        """,
+        (item_id,)
+    )
+
+    db.commit()
+    db.close()
+
+    flash("Item deleted successfully!", "success")
+
+    return redirect(url_for("my_listings"))
 # =====================================================
 # REGISTER
 # =====================================================
@@ -527,6 +753,37 @@ def dashboard():
         name=session["user_name"]
     )
 
+# =====================================================
+# MY LISTINGS
+# =====================================================
+
+@app.route("/my-listings")
+def my_listings():
+
+    if "user_id" not in session:
+        flash("Please login first.", "warning")
+        return redirect(url_for("login"))
+
+    db = get_db()
+
+    items = db.execute("""
+
+        SELECT *
+
+        FROM marketplace_items
+
+        WHERE seller_id = ?
+
+        ORDER BY created_at DESC
+
+    """, (session["user_id"],)).fetchall()
+
+    db.close()
+
+    return render_template(
+        "my_listings.html",
+        items=items
+    )
 
 # =====================================================
 # LOGOUT
