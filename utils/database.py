@@ -2,16 +2,22 @@ import sqlite3
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DB_PATH = BASE_DIR / "database" / "kindkart.db"
+
+DATABASE_DIR = BASE_DIR / "database"
+
+# Create database folder if it doesn't exist
+DATABASE_DIR.mkdir(parents=True, exist_ok=True)
+
+DB_PATH = DATABASE_DIR / "kindkart.db"
 
 
 def get_db():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-
     conn.execute("PRAGMA foreign_keys = ON")
-
     return conn
+
+DATABASE_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def init_db():
