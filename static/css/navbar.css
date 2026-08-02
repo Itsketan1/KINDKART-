@@ -661,6 +661,38 @@ body.dark #menuBtn{
     color:#fff;
 }
 
+/* ==========================================
+   MOBILE ACTION BUTTONS
+========================================== */
+
+.mobile-actions{
+    display:none;
+}
+
+@media (max-width:992px){
+
+    .mobile-actions{
+
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+        margin-top:24px;
+        padding-top:20px;
+        border-top:1px solid rgba(0,0,0,.08);
+
+    }
+
+    .mobile-actions .btn{
+
+        display:flex !important;
+        justify-content:center;
+        align-items:center;
+        gap:10px;
+        width:100%;
+
+    }
+
+}
 /* ======================================================
         END
 ====================================================== */

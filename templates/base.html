@@ -125,6 +125,35 @@
 
 </ul>
 
+<div class="mobile-actions">
+
+    {% if session.get("user_id") %}
+
+        <a href="{{ url_for('dashboard') }}" class="btn btn-outline">
+            <i class="fa-solid fa-table-columns"></i>
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('logout') }}" class="btn btn-primary">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    {% else %}
+
+        <a href="{{ url_for('login') }}" class="btn btn-outline">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Login
+        </a>
+
+        <a href="{{ url_for('register') }}" class="btn btn-primary">
+            <i class="fa-solid fa-user-plus"></i>
+            Get Started
+        </a>
+
+    {% endif %}
+
+</div>
             </nav>
 
             <div class="nav-actions">
