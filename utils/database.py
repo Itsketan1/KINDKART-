@@ -60,25 +60,29 @@ def init_db():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS campaigns (
 
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-        title TEXT NOT NULL,
+    title TEXT NOT NULL,
 
-        description TEXT,
+    category TEXT,
 
-        goal REAL,
+    description TEXT,
 
-        raised REAL DEFAULT 0,
+    goal REAL,
 
-        image TEXT,
+    raised REAL DEFAULT 0,
 
-        ngo_name TEXT,
+    supporters INTEGER DEFAULT 0,
 
-        status TEXT DEFAULT 'active',
+    image TEXT,
 
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ngo_name TEXT,
 
-    )
+    status TEXT DEFAULT 'active',
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+)
     """)
 
     # ===========================
@@ -88,68 +92,142 @@ def init_db():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS donations (
 
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
 
-        user_id INTEGER,
+    campaign_id INTEGER NOT NULL,
 
-        campaign_id INTEGER,
+    donor_name TEXT NOT NULL,
 
-        amount REAL,
+    donor_email TEXT,
 
-        donated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    phone TEXT,
 
-        FOREIGN KEY(user_id) REFERENCES users(id),
+    amount REAL NOT NULL,
 
-        FOREIGN KEY(campaign_id) REFERENCES campaigns(id)
+    payment_method TEXT,
 
+    message TEXT,
+
+    donated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY(campaign_id)
+        REFERENCES campaigns(id)
+        ON DELETE CASCADE
     )
     """)
+
     # ===========================
     # MARKETPLACE ITEMS
     # ===========================
 
     cursor.execute("""
-CREATE TABLE IF NOT EXISTS marketplace_items (
+    CREATE TABLE IF NOT EXISTS marketplace_items (
 
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    seller_id INTEGER NOT NULL,
-    title TEXT NOT NULL,
-    description TEXT,
-    category TEXT,
-    price REAL NOT NULL,
-    condition TEXT,
-    image TEXT,
-    status TEXT DEFAULT 'available',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        seller_id INTEGER NOT NULL,
+        title TEXT NOT NULL,
+        description TEXT,
+        category TEXT,
+        price REAL NOT NULL,
+        condition TEXT,
+        image TEXT,
+        status TEXT DEFAULT 'available',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-    FOREIGN KEY (seller_id) REFERENCES users(id)
+        FOREIGN KEY (seller_id) REFERENCES users(id)
 
-)
-""")
+    )
+    """)
 
-# ===========================
-# DATABASE INDEXES
-# ===========================
-
-    cursor.execute("""
-CREATE INDEX IF NOT EXISTS idx_users_email
-ON users(email)
-""")
+    # ===========================
+    # DATABASE INDEXES
+    # ===========================
 
     cursor.execute("""
-CREATE INDEX IF NOT EXISTS idx_marketplace_status
-ON marketplace_items(status)
-""")
+    CREATE INDEX IF NOT EXISTS idx_users_email
+    ON users(email)
+    """)
 
     cursor.execute("""
-CREATE INDEX IF NOT EXISTS idx_marketplace_seller
-ON marketplace_items(seller_id)
-""")
+    CREATE INDEX IF NOT EXISTS idx_marketplace_status
+    ON marketplace_items(status)
+    """)
 
     cursor.execute("""
-CREATE INDEX IF NOT EXISTS idx_campaign_status
-ON campaigns(status)
-""")
+    CREATE INDEX IF NOT EXISTS idx_marketplace_seller
+    ON marketplace_items(seller_id)
+    """)
 
-    conn.commit()
-    conn.close()
+    cursor.execute("""
+    CREATE INDEX IF NOT EXISTS idx_campaign_status
+    ON campaigns(status)
+    """)
+    # ===========================
+    # DEFAULT CAMPAIGNS
+    # ===========================
+    cursor.execute("SELECT COUNT(*) FROM campaigns")
+    count = cursor.fetchone()[0]
+
+    if count == 0:
+        campaigns = [
+            (
+                "School Supplies For Rural Students",
+                "Education",
+                "Help provide school bags, notebooks, uniforms and essential learning materials.",
+                50000,
+                36000,
+                820,
+                "images/campaigns/campaign1.jpg",
+                "KindKart NGO"
+            ),
+            (
+                "Food Donation Drive",
+                "Food",
+                "Support families by contributing essential food supplies.",
+                50000,
+                34000,
+                620,
+                "images/campaigns/campaign2.jpg",
+                "KindKart NGO"
+            ),
+            (
+                "Student Essentials",
+                "Essentials",
+                "Donate furniture, laptops, books and stationery.",
+                50000,
+                30000,
+                500,
+                "images/campaigns/campaign3.jpg",
+                "KindKart NGO"
+            )
+        ]
+        cursor.executemany(
+            """
+            INSERT INTO campaigns
+            (
+                title,
+                category,
+                description,
+                goal,
+                raised,
+                supporters,
+                image,
+                ngo_name
+            )
+            VALUES(?,?,?,?,?,?,?,?)
+            """,
+            campaigns
+        )
+        
+        try:
+            cursor.execute("ALTER TABLE users ADD COLUMN address TEXT")
+        except sqlite3.OperationalError:
+            pass
+
+        try:
+            cursor.execute("ALTER TABLE users ADD COLUMN bio TEXT")
+        except sqlite3.OperationalError:
+            pass
+
+        conn.commit()
+        conn.close()

@@ -1,3 +1,4 @@
+
 import os
 from werkzeug.utils import secure_filename
 from flask import (
@@ -35,6 +36,7 @@ def allowed_file(filename):
         "." in filename and
         filename.rsplit(".",1)[1].lower() in ALLOWED_EXTENSIONS
     )
+
 
 # =====================================================
 # HOME
@@ -214,36 +216,55 @@ def donate_campaign(campaign_id):
         (campaign_id,)
     ).fetchone()
 
+    print("Campaign ID requested:", campaign_id)
+    print("Campaign found:", campaign)
+
+    all_campaigns = db.execute("SELECT id, title FROM campaigns").fetchall()
+    print("All campaigns:", [dict(c) for c in all_campaigns])
+
     if campaign is None:
         db.close()
         return render_template("404.html"), 404
 
     if request.method == "POST":
-        amount = float(request.form["amount"])
+        amount = request.form.get("custom_amount")
 
-        # Save donation
+        if not amount:
+            amount = request.form.get("amount")
+
+        amount = float(amount)
+
         db.execute(
             """
             INSERT INTO donations
             (
-                user_id,
                 campaign_id,
-                amount
+                donor_name,
+                donor_email,
+                phone,
+                amount,
+                payment_method,
+                message
             )
-            VALUES (?,?,?)
+            VALUES (?,?,?,?,?,?,?)
             """,
             (
-                session.get("user_id"),
                 campaign_id,
-                amount
+                request.form["name"],
+                request.form["email"],
+                request.form["phone"],
+                amount,
+                request.form["payment"],
+                request.form.get("message", "")
             )
         )
 
-        # Update campaign total
         db.execute(
             """
             UPDATE campaigns
-            SET raised = raised + ?
+            SET
+                raised = raised + ?,
+                supporters = supporters + 1
             WHERE id = ?
             """,
             (
@@ -255,10 +276,7 @@ def donate_campaign(campaign_id):
         db.commit()
         db.close()
 
-        flash(
-            "Thank you for your donation!",
-            "success"
-        )
+        flash("Thank you for your donation!", "success")
 
         return redirect(
             url_for(
@@ -748,11 +766,72 @@ def dashboard():
             name=session["user_name"]
         )
 
+    # -----------------------
+    # DONOR DASHBOARD
+    # -----------------------
+
+    db = get_db()
+
+    donations = db.execute(
+        """
+        SELECT
+            campaigns.title,
+            donations.amount,
+            donations.donated_at
+        FROM donations
+        JOIN campaigns
+            ON campaigns.id = donations.campaign_id
+        ORDER BY donations.donated_at DESC
+        """
+    ).fetchall()
+
+    total_amount = db.execute(
+        """
+        SELECT IFNULL(SUM(amount),0)
+        FROM donations
+        """
+    ).fetchone()[0]
+
+    total_donations = db.execute(
+        """
+        SELECT COUNT(*)
+        FROM donations
+        """
+    ).fetchone()[0]
+    db.close()
+
     return render_template(
         "donor_dashboard.html",
-        name=session["user_name"]
+        name=session["user_name"],
+        donations=donations,
+        total_amount=total_amount,
+        total_donations=total_donations
     )
 
+@app.route("/profile")
+def profile():
+
+    if "user_id" not in session:
+        flash("Please login first.", "warning")
+        return redirect(url_for("login"))
+
+    db = get_db()
+
+    user = db.execute(
+        """
+        SELECT *
+        FROM users
+        WHERE id = ?
+        """,
+        (session["user_id"],)
+    ).fetchone()
+
+    db.close()
+
+    return render_template(
+        "profile.html",
+        user=user
+    )
 # =====================================================
 # MY LISTINGS
 # =====================================================
@@ -810,6 +889,144 @@ def logout():
 def page_not_found(error):
 
     return render_template("404.html"), 404
+
+
+# =====================================================
+# EDIT PROFILE
+# =====================================================
+
+@app.route("/edit-profile", methods=["GET", "POST"])
+def edit_profile():
+
+    if "user_id" not in session:
+        flash("Please login first.", "warning")
+        return redirect(url_for("login"))
+
+    db = get_db()
+
+    user = db.execute(
+        "SELECT * FROM users WHERE id=?",
+        (session["user_id"],)
+    ).fetchone()
+
+    if request.method == "POST":
+
+        full_name = request.form["full_name"]
+        phone = request.form["phone"]
+        college = request.form["college"]
+
+        profile_path = user["profile_image"]
+
+        image = request.files.get("profile_image")
+
+        if image and image.filename != "":
+
+            if allowed_file(image.filename):
+
+                filename = secure_filename(image.filename)
+
+                image.save(
+                    os.path.join(
+                        app.config["UPLOAD_FOLDER"],
+                        filename
+                    )
+                )
+
+                profile_path = "uploads/" + filename
+
+        db.execute(
+            """
+            UPDATE users
+            SET
+                full_name=?,
+                phone=?,
+                college=?,
+                profile_image=?
+            WHERE id=?
+            """,
+            (
+                full_name,
+                phone,
+                college,
+                profile_path,
+                session["user_id"]
+            )
+        )
+
+        db.commit()
+
+        session["user_name"] = full_name
+
+        flash("Profile updated successfully!", "success")
+
+        db.close()
+
+        return redirect(url_for("profile"))
+
+    db.close()
+
+    return render_template(
+        "edit_profile.html",
+        user=user
+    )
+# =====================================================
+# CHANGE PASSWORD
+# =====================================================
+
+from werkzeug.security import check_password_hash, generate_password_hash
+
+@app.route("/change-password", methods=["GET", "POST"])
+def change_password():
+
+    if "user_id" not in session:
+        flash("Please login first.", "warning")
+        return redirect(url_for("login"))
+
+    db = get_db()
+
+    user = db.execute(
+        "SELECT * FROM users WHERE id=?",
+        (session["user_id"],)
+    ).fetchone()
+
+    if request.method == "POST":
+
+        current = request.form["current_password"]
+        new = request.form["new_password"]
+        confirm = request.form["confirm_password"]
+
+        if not check_password_hash(user["password"], current):
+            flash("Current password is incorrect.", "danger")
+            db.close()
+            return redirect(url_for("change_password"))
+
+        if new != confirm:
+            flash("Passwords do not match.", "danger")
+            db.close()
+            return redirect(url_for("change_password"))
+
+        db.execute(
+            """
+            UPDATE users
+            SET password=?
+            WHERE id=?
+            """,
+            (
+                generate_password_hash(new),
+                session["user_id"]
+            )
+        )
+
+        db.commit()
+        db.close()
+
+        flash("Password changed successfully.", "success")
+
+        return redirect(url_for("profile"))
+
+    db.close()
+
+    return render_template("change_password.html")
 
 
 # =====================================================

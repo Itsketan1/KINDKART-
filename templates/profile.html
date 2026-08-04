@@ -1,0 +1,117 @@
+{% extends "dashboard_base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<section class="dashboard">
+
+<div class="container">
+
+<div class="dashboard-card">
+
+<div style="text-align:center; margin-bottom:30px;">
+
+<div class="profile-avatar">
+
+    {% if user.profile_image %}
+
+    <img
+        src="{{ url_for('static', filename=user.profile_image) }}"
+        alt="Profile">
+
+    {% else %}
+
+    <img
+        src="{{ url_for('static', filename='images/default-user.png') }}"
+        alt="Profile">
+
+    {% endif %}
+
+</div>
+
+<h2>{{ user.full_name }}</h2>
+
+<p>{{ user.role|title }}</p>
+
+</div>
+
+<table class="dashboard-table">
+
+<tr>
+
+<th>Full Name</th>
+
+<td>{{ user.full_name }}</td>
+
+</tr>
+
+<tr>
+
+<th>Email</th>
+
+<td>{{ user.email }}</td>
+
+</tr>
+
+<tr>
+
+<th>Phone</th>
+
+<td>{{ user.phone }}</td>
+
+</tr>
+
+<tr>
+
+<th>College</th>
+
+<td>{{ user.college }}</td>
+
+</tr>
+
+<tr>
+
+<th>Role</th>
+
+<td>{{ user.role }}</td>
+
+</tr>
+
+<tr>
+
+<th>Joined</th>
+
+<td>{{ user.created_at }}</td>
+
+</tr>
+
+</table>
+
+<div style="margin-top:30px;display:flex;gap:15px;">
+
+<a
+href="/edit-profile"
+class="btn btn-primary">
+
+Edit Profile
+
+</a>
+
+<a
+href="/change-password"
+class="btn btn-secondary">
+
+Change Password
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

@@ -103,21 +103,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
         </a>
 
-        <a href="#">
+   <a href="#">
+    <i class="fas fa-comments"></i>
+    Messages
+</a>
 
-            <i class="fas fa-comments"></i>
-
-            Messages
-
-        </a>
-
-        <a href="#">
-
-            <i class="fas fa-user"></i>
-
-            Profile
-
-        </a>
+<a href="{{ url_for('profile') }}"
+   class="{% if request.path == '/profile' %}active{% endif %}">
+    <i class="fas fa-user"></i>
+    Profile
+</a>
 
     </nav>
 

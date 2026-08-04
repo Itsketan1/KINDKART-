@@ -1,0 +1,80 @@
+{% extends "dashboard_base.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-card">
+
+<h2>Edit Profile</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<div class="form-group">
+
+<label>Full Name</label>
+
+<input
+type="text"
+name="full_name"
+value="{{ user.full_name }}"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Email</label>
+
+<input
+type="email"
+value="{{ user.email }}"
+disabled>
+
+</div>
+
+<div class="form-group">
+
+<label>Phone</label>
+
+<input
+type="text"
+name="phone"
+value="{{ user.phone }}">
+
+</div>
+
+<div class="form-group">
+
+<label>College</label>
+
+<input
+type="text"
+name="college"
+value="{{ user.college }}">
+
+</div>
+
+<div class="form-group">
+
+<label>Profile Picture</label>
+
+<input
+type="file"
+name="profile_image"
+accept=".png,.jpg,.jpeg,.webp">
+
+</div>
+<br>
+
+<button class="btn btn-primary">
+
+Save Changes
+
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}

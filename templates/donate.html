@@ -44,12 +44,12 @@
                 <div class="summary-stats">
 
                     <div>
-                        <h3>${{ campaign.raised }}</h3>
+                        <h3>₹{{ campaign.raised }}</h3>
                         <p>Raised</p>
                     </div>
 
                     <div>
-                        <h3>${{ campaign.goal }}</h3>
+                        <h3>₹{{ campaign.goal }}</h3>
                         <p>Goal</p>
                     </div>
 
@@ -68,7 +68,7 @@
 
                 <h2>Support this Campaign ❤️</h2>
 
-                <form method="POST">
+                <form method="POST" action="">
 
                     <h3>Select Amount</h3>
 
@@ -77,7 +77,7 @@
     <label>
         <input type="radio"
                name="amount"
-               value="10"
+               value="100"
                required>
         <span>₹100</span>
     </label>
@@ -85,21 +85,21 @@
     <label>
         <input type="radio"
                name="amount"
-               value="25">
+               value="250">
         <span>₹250</span>
     </label>
 
     <label>
         <input type="radio"
                name="amount"
-               value="50">
+               value="500">
         <span>₹500</span>
     </label>
 
     <label>
         <input type="radio"
                name="amount"
-               value="100">
+               value="1000">
         <span>₹1000</span>
     </label>
 
@@ -107,7 +107,9 @@
 
                     <input
                         type="number"
-                        placeholder="Custom Amount">
+                        name="custom_amount"
+                         placeholder="Enter Custom Amount (Optional)"
+    min="1">
 
                     <h3>Donor Information</h3>
 
